@@ -16,5 +16,10 @@ namespace ProyectoInversion.Modulos.Menu
         {
             InitializeComponent();
         }
+
+        private void frmMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

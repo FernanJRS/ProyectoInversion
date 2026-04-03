@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoInversion.Modulos.Menu;
 
 namespace ProyectoInversion
 {
@@ -23,9 +24,17 @@ namespace ProyectoInversion
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void btnIniciar_Click(object sender, EventArgs e)
+        {
+            frmMenu frm = new frmMenu();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
+        
         }
     }
 }

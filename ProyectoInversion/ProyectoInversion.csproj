@@ -64,11 +64,21 @@
     <EmbeddedResource Include="Modulos\Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Menu\frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Fonts\StackSansHeadline-Bold.ttf" />
+    <None Include="Fonts\StackSansHeadline-ExtraLight.ttf" />
+    <None Include="Fonts\StackSansHeadline-Light.ttf" />
+    <None Include="Fonts\StackSansHeadline-Medium.ttf" />
+    <None Include="Fonts\StackSansHeadline-Regular.ttf" />
+    <None Include="Fonts\StackSansHeadline-SemiBold.ttf" />
+    <None Include="Fonts\StackSansHeadline-VariableFont_wght.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +103,7 @@
     <Folder Include="Reportes\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Images\LOGO.png" />
     <Content Include="Resources\Images\Logo_Finanzas.png" />
     <Content Include="Resources\Icons\profits_78367.ico" />
   </ItemGroup>
