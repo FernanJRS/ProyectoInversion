@@ -33,88 +33,90 @@
             this.escenarioBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escenarioPesimistaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escenarioOptimistaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.AutoSize = false;
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.escenarioBaseToolStripMenuItem,
             this.escenarioPesimistaToolStripMenuItem,
-            this.escenarioOptimistaToolStripMenuItem});
+            this.escenarioOptimistaToolStripMenuItem,
+            this.sistemaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(220, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(800, 37);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuStrip1.Size = new System.Drawing.Size(800, 26);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // escenarioBaseToolStripMenuItem
             // 
-            this.escenarioBaseToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(230)))), ((int)(((byte)(161)))));
-            this.escenarioBaseToolStripMenuItem.Font = new System.Drawing.Font("Stack Sans Headline SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.escenarioBaseToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.escenarioBaseToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escenarioBaseToolStripMenuItem.Name = "escenarioBaseToolStripMenuItem";
-            this.escenarioBaseToolStripMenuItem.Size = new System.Drawing.Size(104, 33);
-            this.escenarioBaseToolStripMenuItem.Text = "Escenario Base";
+            this.escenarioBaseToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
+            this.escenarioBaseToolStripMenuItem.Text = "Gestión de Escenarios";
+            this.escenarioBaseToolStripMenuItem.Click += new System.EventHandler(this.escenarioBaseToolStripMenuItem_Click);
             // 
             // escenarioPesimistaToolStripMenuItem
             // 
-            this.escenarioPesimistaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(243)))), ((int)(((byte)(232)))));
-            this.escenarioPesimistaToolStripMenuItem.Font = new System.Drawing.Font("Stack Sans Headline SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.escenarioPesimistaToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.escenarioPesimistaToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escenarioPesimistaToolStripMenuItem.Name = "escenarioPesimistaToolStripMenuItem";
-            this.escenarioPesimistaToolStripMenuItem.Size = new System.Drawing.Size(132, 33);
-            this.escenarioPesimistaToolStripMenuItem.Text = "Escenario Pesimista";
+            this.escenarioPesimistaToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
+            this.escenarioPesimistaToolStripMenuItem.Text = "Análisis Financiero";
             // 
             // escenarioOptimistaToolStripMenuItem
             // 
-            this.escenarioOptimistaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(205)))), ((int)(((byte)(251)))));
-            this.escenarioOptimistaToolStripMenuItem.Font = new System.Drawing.Font("Stack Sans Headline SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.escenarioOptimistaToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.escenarioOptimistaToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.escenarioOptimistaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.escenarioOptimistaToolStripMenuItem.Name = "escenarioOptimistaToolStripMenuItem";
-            this.escenarioOptimistaToolStripMenuItem.Size = new System.Drawing.Size(132, 33);
-            this.escenarioOptimistaToolStripMenuItem.Text = "Escenario Optimista";
+            this.escenarioOptimistaToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.escenarioOptimistaToolStripMenuItem.Text = "Riesgo e Incertidumbre";
             // 
-            // pictureBox1
+            // sistemaToolStripMenuItem
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(313, 81);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(174, 163);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.sistemaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.salirToolStripMenuItem});
+            this.sistemaToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold);
+            this.sistemaToolStripMenuItem.Name = "sistemaToolStripMenuItem";
+            this.sistemaToolStripMenuItem.Size = new System.Drawing.Size(71, 26);
+            this.sistemaToolStripMenuItem.Text = "Sistema";
             // 
-            // label1
+            // salirToolStripMenuItem
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Stack Sans Headline", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(187, 247);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(425, 44);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Evaluación de Proyectos";
+            this.salirToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
+            this.ControlBox = false;
             this.Controls.Add(this.menuStrip1);
+            this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMenu";
-            this.Text = "frmMenu";
+            this.Text = "Menú Principal";
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -124,7 +126,7 @@
         private System.Windows.Forms.ToolStripMenuItem escenarioBaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem escenarioPesimistaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem escenarioOptimistaToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem sistemaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
     }
 }
