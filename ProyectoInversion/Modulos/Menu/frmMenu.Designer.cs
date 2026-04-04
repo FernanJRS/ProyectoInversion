@@ -35,6 +35,7 @@
             this.escenarioOptimistaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compararEscenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +60,8 @@
             // escenarioBaseToolStripMenuItem
             // 
             this.escenarioBaseToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.escenarioBaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.compararEscenariosToolStripMenuItem});
             this.escenarioBaseToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escenarioBaseToolStripMenuItem.Name = "escenarioBaseToolStripMenuItem";
             this.escenarioBaseToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
@@ -99,6 +102,13 @@
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
+            // compararEscenariosToolStripMenuItem
+            // 
+            this.compararEscenariosToolStripMenuItem.Name = "compararEscenariosToolStripMenuItem";
+            this.compararEscenariosToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.compararEscenariosToolStripMenuItem.Text = "Comparar Escenarios";
+            this.compararEscenariosToolStripMenuItem.Click += new System.EventHandler(this.compararEscenariosToolStripMenuItem_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,5 +138,6 @@
         private System.Windows.Forms.ToolStripMenuItem escenarioOptimistaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sistemaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compararEscenariosToolStripMenuItem;
     }
 }
