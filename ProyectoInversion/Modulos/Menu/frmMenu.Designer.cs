@@ -35,6 +35,7 @@
             this.escenarioOptimistaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.escenarioBaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +60,8 @@
             // escenarioBaseToolStripMenuItem
             // 
             this.escenarioBaseToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.escenarioBaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.escenarioBaseToolStripMenuItem1});
             this.escenarioBaseToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escenarioBaseToolStripMenuItem.Name = "escenarioBaseToolStripMenuItem";
             this.escenarioBaseToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
@@ -95,9 +98,16 @@
             // 
             this.salirToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            // 
+            // escenarioBaseToolStripMenuItem1
+            // 
+            this.escenarioBaseToolStripMenuItem1.Name = "escenarioBaseToolStripMenuItem1";
+            this.escenarioBaseToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.escenarioBaseToolStripMenuItem1.Text = "Escenario Base";
+            this.escenarioBaseToolStripMenuItem1.Click += new System.EventHandler(this.escenarioBaseToolStripMenuItem1_Click);
             // 
             // frmMenu
             // 
@@ -128,5 +138,6 @@
         private System.Windows.Forms.ToolStripMenuItem escenarioOptimistaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sistemaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem escenarioBaseToolStripMenuItem1;
     }
 }

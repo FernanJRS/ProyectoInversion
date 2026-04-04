@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoInversion.Modulos.Base;
 
 namespace ProyectoInversion.Modulos.Menu
 {
@@ -28,12 +29,20 @@ namespace ProyectoInversion.Modulos.Menu
 
         private void escenarioBaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void escenarioBaseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmBase frm = new frmBase();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
+            this.Close();
         }
     }
 }
