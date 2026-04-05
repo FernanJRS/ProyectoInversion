@@ -15,6 +15,10 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
 {
     public partial class frmCompararEscenarios : Form
     {
+        // Variables para ScottPlot
+        double vanBase = 0, vanA = 0, vanB = 0, tirBase = 0, tirA = 0, tirB = 0, irBase = 0, irA = 0, irB = 0;
+        String metrica = "VAN";
+        double cont = 0;
         public frmCompararEscenarios()
         {
             InitializeComponent();
@@ -25,9 +29,9 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             cmbEscenarioBase.DataSource = dtAlternativas.Copy();
             cmbEscenarioBase.ValueMember = "AlternativaID";
             cmbEscenarioBase.DisplayMember = "Nombre";
-            cmbEscenarioBase.SelectedIndex = 0; 
+            cmbEscenarioBase.SelectedIndex = 0;
 
-            cmbEscenarioBase.Enabled = false;   
+            cmbEscenarioBase.Enabled = false;
 
             DataView dvFiltrado = new DataView(dtAlternativas);
             dvFiltrado.RowFilter = "Nombre <> 'Escenario Base'";
@@ -36,7 +40,10 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             cmbAlternativaA.DataSource = dvFiltrado;
             cmbAlternativaA.ValueMember = "AlternativaID";
             cmbAlternativaA.DisplayMember = "Nombre";
-            cmbAlternativaA.SelectedIndex = 0;
+            if (cont == 0)
+            {
+                cmbAlternativaA.SelectedIndex = 0;
+            }
 
             DataView dvFiltrado2 = new DataView(dtAlternativas);
             dvFiltrado2.RowFilter = "Nombre <> 'Escenario Base'";
@@ -45,10 +52,14 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             cmbAlternativaB.DataSource = dvFiltrado2;
             cmbAlternativaB.ValueMember = "AlternativaID";
             cmbAlternativaB.DisplayMember = "Nombre";
-            cmbAlternativaB.SelectedIndex = 1;
+            if (cont == 0)
+            {
+                cmbAlternativaB.SelectedIndex = 1;
+            }
 
             // Una vez cargados, disparar la primera comparativa
             CargarDatosComparativa();
+            cont++;
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -68,7 +79,7 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -96,27 +107,39 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             panel3.BackColor = ColorTranslator.FromHtml("#2C7A9E");
         }
 
+        private void rbIndicador_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if (rb != null && rb.Checked)
+            {
+                // Guardamos cuál es la métrica seleccionada basándonos en el Tag o Name
+                metrica = rb.Text; // "VAN", "TIR" o "IR"
+                DeterminarMetricaYGraficar();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CargarDatosComparativa();
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
-            frmCrearAlternativa crearAlternativa = new frmCrearAlternativa();
-            crearAlternativa.ShowDialog();
+            AbrirCrearAlternativa();
         }
 
         private void panel2_MouseClick(object sender, MouseEventArgs e)
         {
-            frmCrearAlternativa crearAlternativa = new frmCrearAlternativa();
-            crearAlternativa.ShowDialog();
+            AbrirCrearAlternativa();
         }
 
         private void panel3_MouseClick(object sender, MouseEventArgs e)
         {
-            frmCrearAlternativa crearAlternativa = new frmCrearAlternativa();
-            crearAlternativa.ShowDialog();
+            AbrirCrearAlternativa();
         }
 
         private void frmCompararEscenarios_Load(object sender, EventArgs e)
@@ -131,106 +154,89 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
                 return;
 
             // 2. Extraer los IDs (ValueMember) para SQL y los Nombres (DisplayMember) para la UI
-            int idBase = 1; // ID fijo de la alternativa base según tu lógica
+            int idBase = Convert.ToInt32(cmbEscenarioBase.SelectedValue);
             int idA = Convert.ToInt32(cmbAlternativaA.SelectedValue);
             int idB = Convert.ToInt32(cmbAlternativaB.SelectedValue);
 
+            // Cargar detalles de la alternativas
+            ConexionDB db = new ConexionDB();
+            DataTable dtBase = db.ObtenerDetalleAlternativa(idBase);
 
-            string connectionString = "Server = 3.128.144.165; Database = DB20212000849; User ID = carlos.rivera; Password = CR20212000849;";
-
-            using (SqlConnection con = new SqlConnection(connectionString))
+            if (dtBase.Rows.Count > 0)
             {
-                try
-                {
-                    con.Open();
+                DataRow row = dtBase.Rows[0];
 
-                    // -----------------------------------------------------------
-                    // A. LLENAR EL DATAGRIDVIEW (Usando tu SP de comparación)
-                    // -----------------------------------------------------------
-                    using (SqlCommand cmdGrid = new SqlCommand("proy.sp_CompararAlternativas", con))
-                    {
-                        cmdGrid.CommandType = CommandType.StoredProcedure;
-                        cmdGrid.Parameters.AddWithValue("@SimulacionID", 1);
-                        cmdGrid.Parameters.AddWithValue("@AltID_A", idBase);
-                        cmdGrid.Parameters.AddWithValue("@AltID_B", idA);
-                        cmdGrid.Parameters.AddWithValue("@AltID_C", idB);
-
-                        SqlDataAdapter da = new SqlDataAdapter(cmdGrid);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        dvgVariaciones.DataSource = dt;
-                    }
-
-                    // -----------------------------------------------------------
-                    // B. OBTENER INDICADORES PARA LAS TARJETAS Y EL GRÁFICO
-                    // -----------------------------------------------------------
-                    // Usamos la vista que ya tienes en tu SQL
-                    string query = "SELECT Alternativa, AlternativaID, TasaDescuento, VAN, TIR_Pct, IR, InversionInicial FROM proy.vw_IndicadoresPorAlternativa " +
-                                   "WHERE AlternativaID IN (@base, @a, @b)";
-
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@base", idBase);
-                        cmd.Parameters.AddWithValue("@a", idA);
-                        cmd.Parameters.AddWithValue("@b", idB);
-
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        // Variables para ScottPlot
-                        double vanBase = 0, vanA = 0, vanB = 0;
-
-                        while (reader.Read())
-                        {
-                            int id = Convert.ToInt32(reader["AlternativaID"]);
-                            string tasa = $"{Convert.ToDouble(reader["TasaDescuento"]):N2}%";
-                            double van = Convert.ToDouble(reader["VAN"]);
-                            string tir = $"{Convert.ToDouble(reader["TIR_Pct"]):N2}%";
-                            string ir = $"{Convert.ToDouble(reader["IR"]):N4}";
-                            string inversion = $"{Convert.ToDouble(reader["InversionInicial"]):C}";
-
-                            if (id == idBase)
-                            {
-                                lbl1Panel1.Text = "Tasa de Inversión: " + tasa;
-                                lbl2Panel1.Text = "VAN: " + van.ToString("C");
-                                lbl3Panel1.Text = "TIR: " + tir;
-                                lbl4Panel1.Text = "IR: " +ir;
-                                lbl5Panel1.Text = "Inversión: " + inversion;
-                                vanBase = van;
-                            }
-                            else if (id == idA)
-                            {
-                                lbl1Panel2.Text = "Tasa de Inversión: " + tasa;
-                                lbl2Panel2.Text = "VAN: " + van.ToString("C");
-                                lbl3Panel2.Text = "TIR: " + tir;
-                                lbl4Panel2.Text = "IR: " + ir;
-                                lbl5Panel2.Text = "Inversión: " + inversion;
-                                vanA = van;
-                            }
-                            else if (id == idB)
-                            {
-                                lbl1Panel3.Text = "Tasa de Inversión: " + tasa;
-                                lbl2Panel3.Text = "VAN: " + van.ToString("C");
-                                lbl3Panel3.Text = "TIR: " + tir;
-                                lbl4Panel3.Text = "IR: " + ir;
-                                lbl5Panel3.Text = "Inversión: " + inversion;
-                                vanB = van;
-                            }
-                        }
-                        reader.Close();
-
-                        // 3. Actualizar Gráfico con los valores numéricos obtenidos
-                        ActualizarGraficoComparativo(vanBase, vanA, vanB);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al cargar comparativa: " + ex.Message);
-                }
+                // Asignación directa y con formato
+                lbl1Panel1.Text = $"Tasa de Inversión: {Convert.ToDouble(row["TasaDescuento"]):P2}"; // P2 es formato porcentaje
+                lbl2Panel1.Text = $"VAN: {Convert.ToDouble(row["VAN"]):C2}"; // C2 es formato moneda
+                lbl3Panel1.Text = $"TIR: {Convert.ToDouble(row["TIR_Pct"]):N2}%";
+                lbl4Panel1.Text = $"IR: {Convert.ToDouble(row["IR"]):N4}";
+                lbl5Panel1.Text = $"Inversión: {Convert.ToDouble(row["InversionInicial"]):C2}";
+                vanBase = Convert.ToDouble(row["VAN"]);
+                tirBase = Convert.ToDouble(row["TIR_Pct"]);
+                irBase = Convert.ToDouble(row["IR"]);
             }
+
+            DataTable dtA = db.ObtenerDetalleAlternativa(idA);
+
+            if (dtA.Rows.Count > 0)
+            {
+                DataRow row = dtA.Rows[0];
+                lbl1Panel2.Text = $"Tasa de Inversión: {Convert.ToDouble(row["TasaDescuento"]):P2}";
+                lbl2Panel2.Text = $"VAN: {Convert.ToDouble(row["VAN"]):C2}";
+                lbl3Panel2.Text = $"TIR: {Convert.ToDouble(row["TIR_Pct"]):N2}%";
+                lbl4Panel2.Text = $"IR: {Convert.ToDouble(row["IR"]):N4}";
+                lbl5Panel2.Text = $"Inversión: {Convert.ToDouble(row["InversionInicial"]):C2}";
+                vanA = Convert.ToDouble(row["VAN"]);
+                tirA = Convert.ToDouble(row["TIR_Pct"]);
+                irA = Convert.ToDouble(row["IR"]);
+            }
+
+            DataTable dtB = db.ObtenerDetalleAlternativa(idB);
+
+            if (dtB.Rows.Count > 0)
+            {
+                DataRow row = dtB.Rows[0];
+                lbl1Panel3.Text = $"Tasa de Inversión: {Convert.ToDouble(row["TasaDescuento"]):P2}";
+                lbl2Panel3.Text = $"VAN: {Convert.ToDouble(row["VAN"]):C2}";
+                lbl3Panel3.Text = $"TIR: {Convert.ToDouble(row["TIR_Pct"]):N2}%";
+                lbl4Panel3.Text = $"IR: {Convert.ToDouble(row["IR"]):N4}";
+                lbl5Panel3.Text = $"Inversión: {Convert.ToDouble(row["InversionInicial"]):C2}";
+                vanB = Convert.ToDouble(row["VAN"]);
+                tirB = Convert.ToDouble(row["TIR_Pct"]);
+                irB = Convert.ToDouble(row["IR"]);
+            }
+
+            // Graficar comparativa según la métrica seleccionada (VAN, TIR o IR)
+            DeterminarMetricaYGraficar();
+        }
+
+        private void DeterminarMetricaYGraficar()
+        {
+            double vBase = 0, vA = 0, vB = 0;
+            string formato = "C0"; // Formato moneda por defecto
+
+            switch (metrica)
+            {
+                case "VAN":
+                    vBase = vanBase; vA = vanA; vB = vanB;
+                    formato = "C0";
+                    break;
+                case "TIR":
+                    vBase = tirBase / 100; vA = tirA / 100; vB = tirB / 100;
+                    formato = "P2"; // Formato porcentaje
+                    break;
+                case "IR":
+                    vBase = irBase; vA = irA; vB = irB;
+                    formato = "N4"; // 4 decimales
+                    break;
+            }
+
+            ActualizarGraficoComparativo(vBase, vA, vB, metrica, formato);
         }
 
 
-        private void ActualizarGraficoComparativo(double vBase, double vA, double vB)
+        private void ActualizarGraficoComparativo(double vBase, double vA, double vB, String metrica, String formato)
         {
             GrafPlot.Plot.Clear();
 
@@ -241,8 +247,8 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             string nombreB = ((DataRowView)cmbAlternativaB.SelectedItem)["Nombre"].ToString().Replace(" - ", "\n");
 
             var barBase = new Bar { Position = 0, Value = vBase, FillColor = Colors.Gray };
-            var barA = new Bar { Position = 1, Value = vA, FillColor = Colors.RoyalBlue};
-            var barB = new Bar { Position = 2, Value = vB, FillColor = Colors.Navy};
+            var barA = new Bar { Position = 1, Value = vA, FillColor = Colors.RoyalBlue };
+            var barB = new Bar { Position = 2, Value = vB, FillColor = Colors.Navy };
 
             List<Bar> misBarras = new List<Bar> { barBase, barA, barB };
             var barPlot = GrafPlot.Plot.Add.Bars(misBarras);
@@ -251,27 +257,55 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             barPlot.ValueLabelStyle.IsVisible = true;
             barPlot.ValueLabelStyle.FontSize = 12;
 
-            
+
             Tick[] ticks = new Tick[]
             {
                 new Tick(0, nombreBase),
                 new Tick(1, nombreA),
-                new Tick(2, nombreB) 
+                new Tick(2, nombreB)
             };
+
+            foreach (var bar in misBarras)
+                bar.Label = bar.Value.ToString(formato);
 
             GrafPlot.Plot.Axes.Bottom.TickGenerator = new ScottPlot.TickGenerators.NumericManual(ticks);
 
             // Ajustar el margen inferior para que el texto de dos líneas no se corte
             GrafPlot.Plot.Axes.Bottom.MinimumSize = 30;
 
-            GrafPlot.Plot.Title("Comparativa de VAN por Escenario");
+            GrafPlot.Plot.Title($"Comparativa de {metrica} por Escenario");
             GrafPlot.Plot.Axes.Margins(bottom: 0, top: 0.2);
             GrafPlot.Refresh();
         }
 
-        private void cmbEscenarioBase_SelectedIndexChanged(object sender, EventArgs e)
+        private void AbrirCrearAlternativa()
         {
+            using (frmCrearAlternativa fCrear = new frmCrearAlternativa())
+            {
+                if (fCrear.ShowDialog() == DialogResult.OK)
+                {
+                    // 1. Recargar la lista de alternativas desde la DB
+                    ConexionDB db = new ConexionDB();
+                    DataTable dtNuevas = db.ObtenerAlternativas();
 
+                    // 2. Refrescar los ComboBoxes
+                    cmbEscenarioBase.DataSource = dtNuevas.Copy();
+
+                    DataView dvA = new DataView(dtNuevas);
+                    dvA.RowFilter = "Nombre <> 'Escenario Base'";
+                    cmbAlternativaA.DataSource = dvA;
+
+                    DataView dvB = new DataView(dtNuevas);
+                    dvB.RowFilter = "Nombre <> 'Escenario Base'";
+                    cmbAlternativaB.DataSource = dvB;
+
+                    // 3. Forzar el refresco de etiquetas y ScottPlot
+                    CargarDatosComparativa();
+
+                    //MessageBox.Show("Escenarios actualizados con la nueva alternativa");
+                }
+            }
         }
+
     }
 }
