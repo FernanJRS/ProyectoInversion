@@ -31,11 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.escenarioBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.escenarioBaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.escenarioPesimistaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escenarioOptimistaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.escenarioBaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.comparaciónEscenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,9 +69,18 @@
             this.escenarioBaseToolStripMenuItem.Text = "Gestión de Escenarios";
             this.escenarioBaseToolStripMenuItem.Click += new System.EventHandler(this.escenarioBaseToolStripMenuItem_Click);
             // 
+            // escenarioBaseToolStripMenuItem1
+            // 
+            this.escenarioBaseToolStripMenuItem1.Name = "escenarioBaseToolStripMenuItem1";
+            this.escenarioBaseToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.escenarioBaseToolStripMenuItem1.Text = "Escenario Base";
+            this.escenarioBaseToolStripMenuItem1.Click += new System.EventHandler(this.escenarioBaseToolStripMenuItem1_Click);
+            // 
             // escenarioPesimistaToolStripMenuItem
             // 
             this.escenarioPesimistaToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.escenarioPesimistaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.comparaciónEscenariosToolStripMenuItem});
             this.escenarioPesimistaToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escenarioPesimistaToolStripMenuItem.Name = "escenarioPesimistaToolStripMenuItem";
             this.escenarioPesimistaToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
@@ -102,12 +112,12 @@
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
-            // escenarioBaseToolStripMenuItem1
+            // comparaciónEscenariosToolStripMenuItem
             // 
-            this.escenarioBaseToolStripMenuItem1.Name = "escenarioBaseToolStripMenuItem1";
-            this.escenarioBaseToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.escenarioBaseToolStripMenuItem1.Text = "Escenario Base";
-            this.escenarioBaseToolStripMenuItem1.Click += new System.EventHandler(this.escenarioBaseToolStripMenuItem1_Click);
+            this.comparaciónEscenariosToolStripMenuItem.Name = "comparaciónEscenariosToolStripMenuItem";
+            this.comparaciónEscenariosToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.comparaciónEscenariosToolStripMenuItem.Text = "Flujos Escenarios";
+            this.comparaciónEscenariosToolStripMenuItem.Click += new System.EventHandler(this.comparaciónEscenariosToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -139,5 +149,6 @@
         private System.Windows.Forms.ToolStripMenuItem sistemaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem escenarioBaseToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem comparaciónEscenariosToolStripMenuItem;
     }
 }

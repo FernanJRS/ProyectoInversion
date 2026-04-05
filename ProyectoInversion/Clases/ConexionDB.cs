@@ -15,12 +15,12 @@ namespace ProyectoInversion.Clases
 
         public ConexionDB()
         {
-            try 
+            try
             {
                 string connectionString = "Server = 3.128.144.165; Database = DB20212000849; User ID = carlos.rivera; Password = CR20212000849;";
                 conexion = new SqlConnection(connectionString);
-            } 
-            catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("❌ Error al conectar con la base de datos:\n" + ex.Message, "Conexión fallida", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

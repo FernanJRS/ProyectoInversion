@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProyectoInversion.Modulos.Base;
+using ProyectoInversion.Modulos.FlujosCasos;
 
 namespace ProyectoInversion.Modulos.Menu
 {
@@ -40,6 +41,14 @@ namespace ProyectoInversion.Modulos.Menu
         private void escenarioBaseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmBase frm = new frmBase();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
+            this.Close();
+        }
+
+        private void comparaciónEscenariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFlujosCasos frm = new frmFlujosCasos();
             frm.StartPosition = FormStartPosition.CenterScreen;
             frm.ShowDialog();
             this.Close();

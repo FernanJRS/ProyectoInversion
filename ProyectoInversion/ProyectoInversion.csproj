@@ -183,6 +183,15 @@
       <DependentUpon>frmBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Base\Models.cs" />
+    <Compile Include="Modulos\FlujosCasos\frmFlujosCasos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\FlujosCasos\frmFlujosCasos.Designer.cs">
+      <DependentUpon>frmFlujosCasos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\FlujosCasos\frmFlujosCasos.Grid.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Login\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +208,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Modulos\Base\frmBase.resx">
       <DependentUpon>frmBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\FlujosCasos\frmFlujosCasos.resx">
+      <DependentUpon>frmFlujosCasos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
