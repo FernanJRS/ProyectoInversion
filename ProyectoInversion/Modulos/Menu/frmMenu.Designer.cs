@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.escenarioBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compararEscenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escenarioPesimistaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escenarioOptimistaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.compararEscenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +67,14 @@
             this.escenarioBaseToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
             this.escenarioBaseToolStripMenuItem.Text = "Gestión de Escenarios";
             this.escenarioBaseToolStripMenuItem.Click += new System.EventHandler(this.escenarioBaseToolStripMenuItem_Click);
+            // 
+            // compararEscenariosToolStripMenuItem
+            // 
+            this.compararEscenariosToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.compararEscenariosToolStripMenuItem.Name = "compararEscenariosToolStripMenuItem";
+            this.compararEscenariosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.compararEscenariosToolStripMenuItem.Text = "Comparar Escenarios";
+            this.compararEscenariosToolStripMenuItem.Click += new System.EventHandler(this.compararEscenariosToolStripMenuItem_Click);
             // 
             // escenarioPesimistaToolStripMenuItem
             // 
@@ -101,13 +109,6 @@
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
-            // 
-            // compararEscenariosToolStripMenuItem
-            // 
-            this.compararEscenariosToolStripMenuItem.Name = "compararEscenariosToolStripMenuItem";
-            this.compararEscenariosToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.compararEscenariosToolStripMenuItem.Text = "Comparar Escenarios";
-            this.compararEscenariosToolStripMenuItem.Click += new System.EventHandler(this.compararEscenariosToolStripMenuItem_Click);
             // 
             // frmMenu
             // 

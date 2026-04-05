@@ -102,6 +102,12 @@
     <Compile Include="Modulos\GestiónEscenarios\frmCompararEscenarios.Designer.cs">
       <DependentUpon>frmCompararEscenarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\GestiónEscenarios\frmEliminarAlternativa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\GestiónEscenarios\frmEliminarAlternativa.Designer.cs">
+      <DependentUpon>frmEliminarAlternativa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Login\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\GestiónEscenarios\frmCrearAlternativa.resx">
       <DependentUpon>frmCrearAlternativa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\GestiónEscenarios\frmEliminarAlternativa.resx">
+      <DependentUpon>frmEliminarAlternativa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

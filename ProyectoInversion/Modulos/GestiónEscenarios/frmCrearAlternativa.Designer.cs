@@ -257,7 +257,7 @@
             this.panel1.BackColor = System.Drawing.Color.Blue;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(-1, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(328, 28);
             this.panel1.TabIndex = 24;
@@ -311,7 +311,6 @@
             this.Controls.Add(this.label2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCrearAlternativa";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Crear Alternativa";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

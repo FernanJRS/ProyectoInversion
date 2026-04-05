@@ -108,7 +108,6 @@ namespace ProyectoInversion.Clases
 
         public DataSet GuardarNuevaAlternativa(string nombre, double tasa, double precio, double demanda, double costoV, double constr, double maqA, double maqB, double costoF, double terreno)
         {
-            int altID = new Int32();
             DataSet dt = new DataSet();
             try
             {

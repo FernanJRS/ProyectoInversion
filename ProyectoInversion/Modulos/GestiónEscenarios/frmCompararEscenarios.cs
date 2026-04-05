@@ -18,7 +18,6 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
         // Variables para ScottPlot
         double vanBase = 0, vanA = 0, vanB = 0, tirBase = 0, tirA = 0, tirB = 0, irBase = 0, irA = 0, irB = 0;
         String metrica = "VAN";
-        double cont = 0;
         public frmCompararEscenarios()
         {
             InitializeComponent();
@@ -40,10 +39,6 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             cmbAlternativaA.DataSource = dvFiltrado;
             cmbAlternativaA.ValueMember = "AlternativaID";
             cmbAlternativaA.DisplayMember = "Nombre";
-            if (cont == 0)
-            {
-                cmbAlternativaA.SelectedIndex = 0;
-            }
 
             DataView dvFiltrado2 = new DataView(dtAlternativas);
             dvFiltrado2.RowFilter = "Nombre <> 'Escenario Base'";
@@ -52,14 +47,10 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             cmbAlternativaB.DataSource = dvFiltrado2;
             cmbAlternativaB.ValueMember = "AlternativaID";
             cmbAlternativaB.DisplayMember = "Nombre";
-            if (cont == 0)
-            {
-                cmbAlternativaB.SelectedIndex = 1;
-            }
 
             // Una vez cargados, disparar la primera comparativa
             CargarDatosComparativa();
-            cont++;
+            this.Shown += frmCompararEscenarios_Shown;
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -138,6 +129,44 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
         private void frmCompararEscenarios_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmCompararEscenarios_Shown(object sender, EventArgs e)
+        {
+            this.Shown -= frmCompararEscenarios_Shown;
+            cmbAlternativaA.SelectedIndex = 0;
+            cmbAlternativaB.SelectedIndex = 1;
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            using(frmEliminarAlternativa frm = new frmEliminarAlternativa())
+            {
+                frm.Owner = this;
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    int idxA = cmbAlternativaA.SelectedIndex;
+                    int idxB = cmbAlternativaB.SelectedIndex;
+
+                    ConexionDB db = new ConexionDB();
+                    DataTable dtNuevas = db.ObtenerAlternativas();
+
+                    cmbEscenarioBase.DataSource = dtNuevas.Copy();
+
+                    DataView dvA = new DataView(dtNuevas);
+                    dvA.RowFilter = "Nombre <> 'Escenario Base'";
+                    cmbAlternativaA.DataSource = dvA;
+
+                    DataView dvB = new DataView(dtNuevas);
+                    dvB.RowFilter = "Nombre <> 'Escenario Base'";
+                    cmbAlternativaB.DataSource = dvB;
+
+                    cmbAlternativaA.SelectedIndex = (idxA < cmbAlternativaA.Items.Count) ? idxA : 0;
+                    cmbAlternativaB.SelectedIndex = (idxB < cmbAlternativaB.Items.Count) ? idxB : 0;
+
+                    CargarDatosComparativa();
+                }
+            }
         }
 
         private void CargarDatosComparativa()
@@ -279,9 +308,12 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
         {
             using (frmCrearAlternativa fCrear = new frmCrearAlternativa(1, 1, alternativaID, panelOrigen))
             {
-                fCrear.Owner = this; 
+                fCrear.Owner = this;
                 if (fCrear.ShowDialog() == DialogResult.OK)
                 {
+                    int idxA = cmbAlternativaA.SelectedIndex;
+                    int idxB = cmbAlternativaB.SelectedIndex;
+
                     ConexionDB db = new ConexionDB();
                     DataTable dtNuevas = db.ObtenerAlternativas();
 
@@ -294,6 +326,17 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
                     DataView dvB = new DataView(dtNuevas);
                     dvB.RowFilter = "Nombre <> 'Escenario Base'";
                     cmbAlternativaB.DataSource = dvB;
+
+                    if (panelOrigen == "A")
+                    {
+                        cmbAlternativaB.SelectedIndex = (idxB < cmbAlternativaB.Items.Count) ? idxB : 0;
+                        cmbAlternativaA.SelectedIndex = cmbAlternativaA.Items.Count - 1;
+                    }
+                    if (panelOrigen == "B")
+                    {
+                        cmbAlternativaA.SelectedIndex = (idxA < cmbAlternativaA.Items.Count) ? idxA : 0;
+                        cmbAlternativaB.SelectedIndex = cmbAlternativaB.Items.Count - 1;
+                    }
 
                     CargarDatosComparativa();
                 }

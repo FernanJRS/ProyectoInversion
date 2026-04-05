@@ -70,7 +70,7 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             }
             finally { Cursor = Cursors.Default; }
 
-            this.Close();
+            //this.Close();
         }
 
         private void MostrarIndicadoresEnVentanaPadre(DataTable dtIndicadores)
@@ -94,11 +94,14 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
 
                 if (resultado != null)
                 {
+                    var ds = resultado.Tables[2];
+                    MostrarIndicadoresEnVentanaPadre(ds);
                     MessageBox.Show("Alternativa guardada correctamente.",
                         "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK; // Esto dispara el refresh en frmCompararEscenarios
                     this.Close();
                 }
+
             }
             catch (Exception ex)
             {
