@@ -69,12 +69,12 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
 
         private void panel1_MouseEnter(object sender, EventArgs e)
         {
-            panel1.BackColor = ColorTranslator.FromHtml("#3BA5D9");
+            pnlAltBase.BackColor = ColorTranslator.FromHtml("#3BA5D9");
         }
 
         private void panel1_MouseLeave(object sender, EventArgs e)
         {
-            panel1.BackColor = ColorTranslator.FromHtml("#2C7A9E");
+            pnlAltBase.BackColor = ColorTranslator.FromHtml("#2C7A9E");
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -89,22 +89,22 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
 
         private void panel2_MouseEnter(object sender, EventArgs e)
         {
-            panel2.BackColor = ColorTranslator.FromHtml("#3BA5D9");
+            pnlAltA.BackColor = ColorTranslator.FromHtml("#3BA5D9");
         }
 
         private void panel2_MouseLeave(object sender, EventArgs e)
         {
-            panel2.BackColor = ColorTranslator.FromHtml("#2C7A9E");
+            pnlAltA.BackColor = ColorTranslator.FromHtml("#2C7A9E");
         }
 
         private void panel3_MouseEnter(object sender, EventArgs e)
         {
-            panel3.BackColor = ColorTranslator.FromHtml("#3BA5D9");
+            pnlAltB.BackColor = ColorTranslator.FromHtml("#3BA5D9");
         }
 
         private void panel3_MouseLeave(object sender, EventArgs e)
         {
-            panel3.BackColor = ColorTranslator.FromHtml("#2C7A9E");
+            pnlAltB.BackColor = ColorTranslator.FromHtml("#2C7A9E");
         }
 
         private void rbIndicador_CheckedChanged(object sender, EventArgs e)
@@ -123,23 +123,16 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             CargarDatosComparativa();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void panel1_MouseClick(object sender, MouseEventArgs e)
-        {
-            AbrirCrearAlternativa();
-        }
-
         private void panel2_MouseClick(object sender, MouseEventArgs e)
         {
-            AbrirCrearAlternativa();
+            int alternativaID = Convert.ToInt32(cmbAlternativaA.SelectedValue);
+            AbrirCrearAlternativa(alternativaID, "A");
         }
 
         private void panel3_MouseClick(object sender, MouseEventArgs e)
         {
-            AbrirCrearAlternativa();
+            int alternativaID = Convert.ToInt32(cmbAlternativaB.SelectedValue);
+            AbrirCrearAlternativa(alternativaID, "B");
         }
 
         private void frmCompararEscenarios_Load(object sender, EventArgs e)
@@ -166,14 +159,14 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             {
                 DataRow row = dtBase.Rows[0];
 
-                // Asignación directa y con formato
-                lbl1Panel1.Text = $"Tasa de Inversión: {Convert.ToDouble(row["TasaDescuento"]):P2}"; // P2 es formato porcentaje
-                lbl2Panel1.Text = $"VAN: {Convert.ToDouble(row["VAN"]):C2}"; // C2 es formato moneda
-                lbl3Panel1.Text = $"TIR: {Convert.ToDouble(row["TIR_Pct"]):N2}%";
-                lbl4Panel1.Text = $"IR: {Convert.ToDouble(row["IR"]):N4}";
-                lbl5Panel1.Text = $"Inversión: {Convert.ToDouble(row["InversionInicial"]):C2}";
+                PoblarTarjetaDesdeIndicadores(pnlAltBase, row);
+                //lbl1Panel1.Text = $"Tasa de Inversión: {Convert.ToDouble(row["TasaDescuento"]):P2}"; // P2 es formato porcentaje
+                //lbl2Panel1.Text = $"VAN: {Convert.ToDouble(row["VAN"]):C2}"; // C2 es formato moneda
+                //lbl3Panel1.Text = $"TIR: {Convert.ToDouble(row["TIR"]):P2}";
+                //lbl4Panel1.Text = $"IR: {Convert.ToDouble(row["IR"]):N4}";
+                //lbl5Panel1.Text = $"Inversión: {Convert.ToDouble(row["InversionInicial"]):C2}";
                 vanBase = Convert.ToDouble(row["VAN"]);
-                tirBase = Convert.ToDouble(row["TIR_Pct"]);
+                tirBase = Convert.ToDouble(row["TIR"]);
                 irBase = Convert.ToDouble(row["IR"]);
             }
 
@@ -182,13 +175,15 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             if (dtA.Rows.Count > 0)
             {
                 DataRow row = dtA.Rows[0];
-                lbl1Panel2.Text = $"Tasa de Inversión: {Convert.ToDouble(row["TasaDescuento"]):P2}";
-                lbl2Panel2.Text = $"VAN: {Convert.ToDouble(row["VAN"]):C2}";
-                lbl3Panel2.Text = $"TIR: {Convert.ToDouble(row["TIR_Pct"]):N2}%";
-                lbl4Panel2.Text = $"IR: {Convert.ToDouble(row["IR"]):N4}";
-                lbl5Panel2.Text = $"Inversión: {Convert.ToDouble(row["InversionInicial"]):C2}";
+
+                PoblarTarjetaDesdeIndicadores(pnlAltA, row);
+                //lbl1Panel2.Text = $"Tasa de Inversión: {Convert.ToDouble(row["TasaDescuento"]):P2}";
+                //lbl2Panel2.Text = $"VAN: {Convert.ToDouble(row["VAN"]):C2}";
+                //lbl3Panel2.Text = $"TIR: {Convert.ToDouble(row["TIR"]):P2}";
+                //lbl4Panel2.Text = $"IR: {Convert.ToDouble(row["IR"]):N4}";
+                //lbl5Panel2.Text = $"Inversión: {Convert.ToDouble(row["InversionInicial"]):C2}";
                 vanA = Convert.ToDouble(row["VAN"]);
-                tirA = Convert.ToDouble(row["TIR_Pct"]);
+                tirA = Convert.ToDouble(row["TIR"]);
                 irA = Convert.ToDouble(row["IR"]);
             }
 
@@ -197,13 +192,15 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             if (dtB.Rows.Count > 0)
             {
                 DataRow row = dtB.Rows[0];
-                lbl1Panel3.Text = $"Tasa de Inversión: {Convert.ToDouble(row["TasaDescuento"]):P2}";
-                lbl2Panel3.Text = $"VAN: {Convert.ToDouble(row["VAN"]):C2}";
-                lbl3Panel3.Text = $"TIR: {Convert.ToDouble(row["TIR_Pct"]):N2}%";
-                lbl4Panel3.Text = $"IR: {Convert.ToDouble(row["IR"]):N4}";
-                lbl5Panel3.Text = $"Inversión: {Convert.ToDouble(row["InversionInicial"]):C2}";
+
+                PoblarTarjetaDesdeIndicadores(pnlAltB, row);
+                //lbl1Panel3.Text = $"Tasa de Inversión: {Convert.ToDouble(row["TasaDescuento"]):P2}";
+                //lbl2Panel3.Text = $"VAN: {Convert.ToDouble(row["VAN"]):C2}";
+                //lbl3Panel3.Text = $"TIR: {Convert.ToDouble(row["TIR"]):P2}";
+                //lbl4Panel3.Text = $"IR: {Convert.ToDouble(row["IR"]):N4}";
+                //lbl5Panel3.Text = $"Inversión: {Convert.ToDouble(row["InversionInicial"]):C2}";
                 vanB = Convert.ToDouble(row["VAN"]);
-                tirB = Convert.ToDouble(row["TIR_Pct"]);
+                tirB = Convert.ToDouble(row["TIR"]);
                 irB = Convert.ToDouble(row["IR"]);
             }
 
@@ -223,7 +220,7 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
                     formato = "C0";
                     break;
                 case "TIR":
-                    vBase = tirBase / 100; vA = tirA / 100; vB = tirB / 100;
+                    vBase = tirBase; vA = tirA; vB = tirB;
                     formato = "P2"; // Formato porcentaje
                     break;
                 case "IR":
@@ -278,17 +275,16 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             GrafPlot.Refresh();
         }
 
-        private void AbrirCrearAlternativa()
+        private void AbrirCrearAlternativa(int alternativaID, string panelOrigen)
         {
-            using (frmCrearAlternativa fCrear = new frmCrearAlternativa())
+            using (frmCrearAlternativa fCrear = new frmCrearAlternativa(1, 1, alternativaID, panelOrigen))
             {
+                fCrear.Owner = this; 
                 if (fCrear.ShowDialog() == DialogResult.OK)
                 {
-                    // 1. Recargar la lista de alternativas desde la DB
                     ConexionDB db = new ConexionDB();
                     DataTable dtNuevas = db.ObtenerAlternativas();
 
-                    // 2. Refrescar los ComboBoxes
                     cmbEscenarioBase.DataSource = dtNuevas.Copy();
 
                     DataView dvA = new DataView(dtNuevas);
@@ -299,12 +295,86 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
                     dvB.RowFilter = "Nombre <> 'Escenario Base'";
                     cmbAlternativaB.DataSource = dvB;
 
-                    // 3. Forzar el refresco de etiquetas y ScottPlot
                     CargarDatosComparativa();
-
-                    //MessageBox.Show("Escenarios actualizados con la nueva alternativa");
                 }
             }
+        }
+
+        public void ActualizarPreview(DataRow rowIndicadores, string panelOrigen)
+        {
+            Panel panelDestino;
+
+            switch (panelOrigen)
+            {
+                case "A":
+                    panelDestino = pnlAltA;
+                    vanA = rowIndicadores["VAN"] == DBNull.Value ? 0 : Convert.ToDouble(rowIndicadores["VAN"]);
+                    tirA = rowIndicadores["TIR"] == DBNull.Value ? 0 : Convert.ToDouble(rowIndicadores["TIR"]);
+                    irA = rowIndicadores["IR"] == DBNull.Value ? 0 : Convert.ToDouble(rowIndicadores["IR"]);
+                    break;
+                case "B":
+                    panelDestino = pnlAltB;
+                    vanB = rowIndicadores["VAN"] == DBNull.Value ? 0 : Convert.ToDouble(rowIndicadores["VAN"]);
+                    tirB = rowIndicadores["TIR"] == DBNull.Value ? 0 : Convert.ToDouble(rowIndicadores["TIR"]);
+                    irB = rowIndicadores["IR"] == DBNull.Value ? 0 : Convert.ToDouble(rowIndicadores["IR"]);
+                    break;
+                default:
+                    return;
+            }
+
+            PoblarTarjetaDesdeIndicadores(panelDestino, rowIndicadores);
+            DeterminarMetricaYGraficar(); // actualizar gráfico también
+        }
+
+        private void SetLabel(Panel pnl, string tag, string text)
+        {
+            // Mapeo de tag semántico → índice de label (lbl{N}Panel{X})
+            Dictionary<string, int> tagAIndice = new Dictionary<string, int>
+            {
+                { "TasaInversion", 1 },
+                { "VAN",           2 },
+                { "TIR",           3 },
+                { "IR",            4 },
+                { "InversionTotal",5 }
+            };
+
+            if (!tagAIndice.TryGetValue(tag, out int indice)) return;
+
+            // Detectar el número del panel según el objeto recibido
+            string numPanel = "";
+            if (pnl == pnlAltBase) numPanel = "1";
+            else if (pnl == pnlAltA) numPanel = "2";
+            else if (pnl == pnlAltB) numPanel = "3";
+            else return;
+
+            string nombreLabel = $"lbl{indice}Panel{numPanel}";
+
+            Control encontrado = pnl.Controls.Find(nombreLabel, true).FirstOrDefault();
+            if (encontrado is System.Windows.Forms.Label lbl)
+                lbl.Text = text;
+        }
+
+        // Búsqueda recursiva por si hay controles anidados
+        private IEnumerable<Control> ObtenerTodosControles(Control padre)
+        {
+            foreach (Control c in padre.Controls)
+            {
+                yield return c;
+                foreach (Control hijo in ObtenerTodosControles(c))
+                    yield return hijo;
+            }
+        }
+
+        private void PoblarTarjetaDesdeIndicadores(Panel pnl, DataRow r)
+        {
+            string Fmt(string col, string fmt = "N2") =>
+                r[col] == DBNull.Value ? "—" : Convert.ToDecimal(r[col]).ToString(fmt);
+
+            SetLabel(pnl, "TasaInversion", $"Tasa de Inversión: {Fmt("TasaDescuento", "P2")}");
+            SetLabel(pnl, "VAN", $"VAN: {Fmt("VAN", "N2")}");
+            SetLabel(pnl, "TIR", $"TIR: {Fmt("TIR", "P2")}%");
+            SetLabel(pnl, "IR", $"IR: {Fmt("IR", "N6")}");
+            SetLabel(pnl, "InversionTotal", $"Inversion: ${Fmt("InversionInicial")}");
         }
 
     }

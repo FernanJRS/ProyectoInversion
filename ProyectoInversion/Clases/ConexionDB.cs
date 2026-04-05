@@ -63,8 +63,8 @@ namespace ProyectoInversion.Clases
                     using (SqlCommand cmd = new SqlCommand("proy.sp_ObtenerAlternativa", con))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@simulacionID", 1);
-                        cmd.Parameters.AddWithValue("@alternativaID", alternativaID);
+                        cmd.Parameters.AddWithValue("@SimulacionID", 1);
+                        cmd.Parameters.AddWithValue("@AlternativaID", alternativaID);
 
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         da.Fill(dt);
@@ -78,9 +78,9 @@ namespace ProyectoInversion.Clases
             return dt;
         }
 
-        public DataTable PrevisualizarAlternativa(string nombre, double tasa, double precio, double demanda, double costoV, double constr, double maqA, double maqB, double costoF, double terreno)
+        public DataSet PrevisualizarAlternativa(string nombre, double tasa, double precio, double demanda, double costoV, double constr, double maqA, double maqB, double costoF, double terreno)
         {
-            DataTable dt = new DataTable();
+            DataSet dt = new DataSet();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("proy.sp_PrevisualizarAlternativa", con))
@@ -89,10 +89,10 @@ namespace ProyectoInversion.Clases
                     cmd.Parameters.AddWithValue("@SimulacionID", 1);
                     cmd.Parameters.AddWithValue("@AlternativaBaseID", 1);
                     cmd.Parameters.AddWithValue("@Nombre", nombre);
-                    cmd.Parameters.AddWithValue("@TasaInt", tasa);
+                    cmd.Parameters.AddWithValue("@TasaInteres", tasa);
                     cmd.Parameters.AddWithValue("@Precio", precio);
                     cmd.Parameters.AddWithValue("@Demanda", demanda);
-                    cmd.Parameters.AddWithValue("@CostoVarriable", costoV);
+                    cmd.Parameters.AddWithValue("@CostoVariable", costoV);
                     cmd.Parameters.AddWithValue("@Construccion", constr);
                     cmd.Parameters.AddWithValue("@MaquinaA", maqA);
                     cmd.Parameters.AddWithValue("@MaquinaB", maqB);
@@ -106,9 +106,10 @@ namespace ProyectoInversion.Clases
             return dt;
         }
 
-        public bool GuardarNuevaAlternativa(string nombre, double tasa, double precio, double demanda, double costoV, double constr, double maqA, double maqB, double costoF, double terreno)
+        public DataSet GuardarNuevaAlternativa(string nombre, double tasa, double precio, double demanda, double costoV, double constr, double maqA, double maqB, double costoF, double terreno)
         {
-            int altID = new Int32;
+            int altID = new Int32();
+            DataSet dt = new DataSet();
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -119,62 +120,93 @@ namespace ProyectoInversion.Clases
                         cmd.Parameters.AddWithValue("@SimulacionID", 1);
                         cmd.Parameters.AddWithValue("@AlternativaBaseID", 1);
                         cmd.Parameters.AddWithValue("@Nombre", nombre);
-                        cmd.Parameters.AddWithValue("@TipoAlternativa", "Personalizada")
-                        cmd.Parameters.AddWithValue("@TasaInt", tasa);
+                        cmd.Parameters.AddWithValue("@TipoAlternativa", "Personalizada");
+                        cmd.Parameters.AddWithValue("@TasaInteres", tasa);
                         cmd.Parameters.AddWithValue("@Precio", precio);
                         cmd.Parameters.AddWithValue("@Demanda", demanda);
-                        cmd.Parameters.AddWithValue("@CostoVarriable", costoV);
+                        cmd.Parameters.AddWithValue("@CostoVariable", costoV);
                         cmd.Parameters.AddWithValue("@Construccion", constr);
                         cmd.Parameters.AddWithValue("@MaquinaA", maqA);
                         cmd.Parameters.AddWithValue("@MaquinaB", maqB);
                         cmd.Parameters.AddWithValue("@CostoFijo", costoF);
                         cmd.Parameters.AddWithValue("@Terreno", terreno);
-                        cmd.Parameters.AddWithValue("@AlternativaID", altID);
+                        
+                        SqlParameter paramAltID = new SqlParameter("@AlternativaID", SqlDbType.Int);
+                        paramAltID.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(paramAltID);
 
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                        return true;
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
                     }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al guardar: " + ex.Message);
-                return false;
-            }
-        }
-
-        public DataTable ObtenerVariablesInput(int alternativaID)
-        {
-            DataTable dt = new DataTable();
-            // Ajustado según el esquema del archivo SQL: Joins para obtener cada variable por su ID
-            string query = @"
-        SELECT 
-            a.Nombre,
-            a.TasaDescuento,
-            MAX(CASE WHEN v.VariableID = 1 THEN v.ValorActual END) AS Precio,
-            MAX(CASE WHEN v.VariableID = 2 THEN v.ValorActual END) AS Demanda,
-            MAX(CASE WHEN v.VariableID = 3 THEN v.ValorActual END) AS CostoVar,
-            MAX(CASE WHEN v.VariableID = 4 THEN v.ValorActual END) AS CostoFijo,
-            MAX(CASE WHEN v.VariableID = 5 THEN v.ValorActual END) AS Construccion,
-            MAX(CASE WHEN v.VariableID = 6 THEN v.ValorActual END) AS MaquinaA,
-            MAX(CASE WHEN v.VariableID = 7 THEN v.ValorActual END) AS Terreno,
-            MAX(CASE WHEN v.VariableID = 8 THEN v.ValorActual END) AS MaquinaB
-        FROM proy.Alternativas a
-        LEFT JOIN proy.VariablesAlternativa v ON a.AlternativaID = v.AlternativaID
-        WHERE a.AlternativaID = @id
-        GROUP BY a.Nombre, a.TasaDescuento";
-
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@id", alternativaID);
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    da.Fill(dt);
-                }
             }
             return dt;
+        }
+
+        public AlternativaModel ObtenerAlternativa(int simulacionID, int alternativaID)
+        {
+            AlternativaModel alt = new AlternativaModel();
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("proy.sp_ObtenerAlternativa", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@SimulacionID", simulacionID);
+                        cmd.Parameters.AddWithValue("@AlternativaID", alternativaID);
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
+                    }
+                }
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow r = dt.Rows[0];
+                    alt.AlternativaID = alternativaID;
+                    alt.SimulacionID = simulacionID;
+                    alt.Nombre = r["Alternativa"].ToString();
+                    alt.TasaDescuento = Convert.ToDecimal(r["TasaDescuento"]);
+                    alt.PrecioBase = Convert.ToDecimal(r["PrecioBase"]);
+                    alt.VentasAnio1 = Convert.ToDecimal(r["VentasAnio1"]);
+                    alt.CostoVarBase = Convert.ToDecimal(r["CostoVarBase"]);
+                    alt.CostoFijoBase = Convert.ToDecimal(r["CostoFijoBase"]);
+                    alt.Construccion = Convert.ToDecimal(r["Construccion"]);
+                    alt.MaquinaA = Convert.ToDecimal(r["MaquinaA"]);
+                    alt.MaquinaB = Convert.ToDecimal(r["MaquinaB"]);
+                    alt.Terreno = Convert.ToDecimal(r["Terreno"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener alternativa: " + ex.Message);
+            }
+            return alt;
+        }
+
+        public void EliminarAlternativa(int alternativaID)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("proy.sp_EliminarAlternativa", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@AlternativaID", alternativaID);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar alternativa: " + ex.Message);
+            }
         }
     }
 }

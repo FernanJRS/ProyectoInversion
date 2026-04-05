@@ -88,6 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\AlternativaModel.cs" />
     <Compile Include="Clases\ConexionDB.cs" />
     <Compile Include="Modulos\GestiónEscenarios\frmCrearAlternativa.cs">
       <SubType>Form</SubType>
