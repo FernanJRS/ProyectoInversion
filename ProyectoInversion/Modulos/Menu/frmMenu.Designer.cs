@@ -32,6 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.escenarioBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escenarioBaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.compararEscenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escenarioPesimistaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escenarioOptimistaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +64,8 @@
             this.escenarioBaseToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.escenarioBaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.escenarioBaseToolStripMenuItem1});
+            this.escenarioBaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.compararEscenariosToolStripMenuItem});
             this.escenarioBaseToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escenarioBaseToolStripMenuItem.Name = "escenarioBaseToolStripMenuItem";
             this.escenarioBaseToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
@@ -75,6 +78,14 @@
             this.escenarioBaseToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.escenarioBaseToolStripMenuItem1.Text = "Escenario Base";
             this.escenarioBaseToolStripMenuItem1.Click += new System.EventHandler(this.escenarioBaseToolStripMenuItem1_Click);
+            // 
+            // compararEscenariosToolStripMenuItem
+            // 
+            this.compararEscenariosToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.compararEscenariosToolStripMenuItem.Name = "compararEscenariosToolStripMenuItem";
+            this.compararEscenariosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.compararEscenariosToolStripMenuItem.Text = "Comparar Escenarios";
+            this.compararEscenariosToolStripMenuItem.Click += new System.EventHandler(this.compararEscenariosToolStripMenuItem_Click);
             // 
             // escenarioPesimistaToolStripMenuItem
             // 
@@ -150,5 +161,6 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem escenarioBaseToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem comparaciónEscenariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compararEscenariosToolStripMenuItem;
     }
 }

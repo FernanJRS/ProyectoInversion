@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoInversion.Modulos.GestiónEscenarios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -52,6 +53,12 @@ namespace ProyectoInversion.Modulos.Menu
             frm.StartPosition = FormStartPosition.CenterScreen;
             frm.ShowDialog();
             this.Close();
+        }
+
+        private void compararEscenariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCompararEscenarios compararEscenarios = new frmCompararEscenarios();
+            compararEscenarios.ShowDialog();
         }
     }
 }

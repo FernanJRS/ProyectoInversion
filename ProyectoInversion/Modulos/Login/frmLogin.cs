@@ -60,6 +60,7 @@ namespace ProyectoInversion
             catch (Exception ex)
             {
                 Conectado = false;
+                Console.WriteLine($"Error al conectar a la base de datos: {ex.Message}");
                 //MessageBox.Show($"Error al conectar a la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 

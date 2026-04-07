@@ -174,6 +174,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\AlternativaModel.cs" />
     <Compile Include="Clases\ConexionDB.cs" />
     <Compile Include="Modulos\Base\DatabaseHelper.cs" />
     <Compile Include="Modulos\Base\frmBase.cs">
@@ -191,6 +192,24 @@
     </Compile>
     <Compile Include="Modulos\FlujosCasos\frmFlujosCasos.Grid.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\GestiónEscenarios\frmCrearAlternativa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\GestiónEscenarios\frmCrearAlternativa.Designer.cs">
+      <DependentUpon>frmCrearAlternativa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\GestiónEscenarios\frmCompararEscenarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\GestiónEscenarios\frmCompararEscenarios.Designer.cs">
+      <DependentUpon>frmCompararEscenarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\GestiónEscenarios\frmEliminarAlternativa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\GestiónEscenarios\frmEliminarAlternativa.Designer.cs">
+      <DependentUpon>frmEliminarAlternativa.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Login\frmLogin.cs">
       <SubType>Form</SubType>
@@ -211,6 +230,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\FlujosCasos\frmFlujosCasos.resx">
       <DependentUpon>frmFlujosCasos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\GestiónEscenarios\frmCompararEscenarios.resx">
+      <DependentUpon>frmCompararEscenarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\GestiónEscenarios\frmCrearAlternativa.resx">
+      <DependentUpon>frmCrearAlternativa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\GestiónEscenarios\frmEliminarAlternativa.resx">
+      <DependentUpon>frmEliminarAlternativa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -268,4 +296,17 @@
   <Import Project="..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.3.119.0\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.3.119.0\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets')" />
   <Import Project="..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets')" />
   <Import Project="..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets')" />
+  <!--<Import Project="..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.3.119.0\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.3.119.0\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets')" />
+	<Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+		<PropertyGroup>
+			<ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+		</PropertyGroup>
+		<Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.3.119.0\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.3.119.0\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets'))" />
+		<Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets'))" />
+		<Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets'))" />
+		<Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
+	</Target>
+	<Import Project="..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets')" />
+	<Import Project="..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets')" />
+	<Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />-->
 </Project>
