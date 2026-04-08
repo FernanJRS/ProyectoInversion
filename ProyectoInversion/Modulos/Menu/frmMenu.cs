@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProyectoInversion.Modulos.Base;
 using ProyectoInversion.Modulos.FlujosCasos;
+using ProyectoInversion.Modulos.Simulaciones;
 
 namespace ProyectoInversion.Modulos.Menu
 {
@@ -57,8 +58,22 @@ namespace ProyectoInversion.Modulos.Menu
 
         private void compararEscenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCompararEscenarios compararEscenarios = new frmCompararEscenarios();
-            compararEscenarios.ShowDialog();
+            using (frmSeleccionarSimulacion frm = new frmSeleccionarSimulacion())
+            {
+                frm.StartPosition = FormStartPosition.CenterScreen;
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
+        }
+
+        private void ingresarDatosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmNuevoProyecto frm = new frmNuevoProyecto();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
+            this.Close();
         }
     }
 }

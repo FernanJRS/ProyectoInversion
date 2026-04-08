@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBase));
             this.lblVAN_Titulo = new System.Windows.Forms.Label();
             this.pnlVAN = new System.Windows.Forms.Panel();
             this.lblVAN_Valor = new System.Windows.Forms.Label();
@@ -263,7 +264,7 @@
             // 
             // frmBase
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 462);
             this.Controls.Add(this.panel5);
@@ -278,7 +279,8 @@
             this.Controls.Add(this.pnlIR);
             this.Controls.Add(this.pnlTIR);
             this.Controls.Add(this.pnlVAN);
-            this.Font = new System.Drawing.Font("Stack Sans Headline", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmBase";
             this.Text = "Escenario Base";
             this.pnlVAN.ResumeLayout(false);

@@ -40,21 +40,22 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Blue;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.panel1.Location = new System.Drawing.Point(-3, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(299, 40);
+            this.panel1.Size = new System.Drawing.Size(299, 34);
             this.panel1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(71, 10);
+            this.label1.Location = new System.Drawing.Point(71, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 20);
+            this.label1.Size = new System.Drawing.Size(163, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Eliminar Alternativa";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -62,25 +63,27 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(64, 71);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.label2.Location = new System.Drawing.Point(90, 67);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(168, 16);
+            this.label2.Size = new System.Drawing.Size(123, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Seleccionar Alternativa";
             // 
             // cmbAlternativas
             // 
+            this.cmbAlternativas.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cmbAlternativas.FormattingEnabled = true;
-            this.cmbAlternativas.Location = new System.Drawing.Point(49, 90);
+            this.cmbAlternativas.Location = new System.Drawing.Point(49, 83);
             this.cmbAlternativas.Name = "cmbAlternativas";
             this.cmbAlternativas.Size = new System.Drawing.Size(200, 21);
             this.cmbAlternativas.TabIndex = 2;
             // 
             // btnEliminar
             // 
+            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.btnEliminar.ForeColor = System.Drawing.Color.Red;
-            this.btnEliminar.Location = new System.Drawing.Point(180, 142);
+            this.btnEliminar.Location = new System.Drawing.Point(72, 142);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(101, 23);
             this.btnEliminar.TabIndex = 3;
@@ -90,8 +93,9 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCancelar.Location = new System.Drawing.Point(73, 142);
+            this.btnCancelar.Location = new System.Drawing.Point(180, 142);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(101, 23);
             this.btnCancelar.TabIndex = 4;
@@ -104,6 +108,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(293, 177);
+            this.ControlBox = false;
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.cmbAlternativas);
@@ -112,7 +117,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEliminarAlternativa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmEliminarAlternativa";
+            this.Text = "Eliminar Alternativa";
             this.Load += new System.EventHandler(this.frmEliminarAlternativa_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -15,7 +15,7 @@ namespace ProyectoInversion.Modulos.Base
     public partial class frmBase : Form
     {
         private FormsPlot formsPlot;
-        private List<FlujoCajaAnual> datosActuales;
+        //private List<FlujoCajaAnual> datosActuales;
         private ToolTip toolTip = new ToolTip();
         public frmBase()
         {

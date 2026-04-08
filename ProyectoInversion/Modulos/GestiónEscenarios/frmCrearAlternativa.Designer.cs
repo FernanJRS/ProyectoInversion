@@ -60,21 +60,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(93, 3);
+            this.label1.Location = new System.Drawing.Point(97, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 25);
+            this.label1.Size = new System.Drawing.Size(124, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "VARIABLES";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(64, 83);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.label2.Location = new System.Drawing.Point(67, 88);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 16);
+            this.label2.Size = new System.Drawing.Size(47, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Precio:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -82,70 +82,70 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(43, 143);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.label3.Location = new System.Drawing.Point(45, 150);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 16);
+            this.label3.Size = new System.Drawing.Size(67, 17);
             this.label3.TabIndex = 0;
             this.label3.Text = "Demanda:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(14, 173);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.label4.Location = new System.Drawing.Point(18, 178);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 16);
+            this.label4.Size = new System.Drawing.Size(96, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "Costo Variable:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(26, 205);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.label5.Location = new System.Drawing.Point(28, 210);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 16);
+            this.label5.Size = new System.Drawing.Size(86, 17);
             this.label5.TabIndex = 4;
             this.label5.Text = "Construcción:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(52, 330);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.label6.Location = new System.Drawing.Point(58, 335);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 16);
+            this.label6.Size = new System.Drawing.Size(56, 17);
             this.label6.TabIndex = 8;
             this.label6.Text = "Terreno:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(43, 299);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.label7.Location = new System.Drawing.Point(45, 304);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 16);
+            this.label7.Size = new System.Drawing.Size(69, 17);
             this.label7.TabIndex = 7;
             this.label7.Text = "Costo Fijo:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(39, 268);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.label8.Location = new System.Drawing.Point(41, 273);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 16);
+            this.label8.Size = new System.Drawing.Size(73, 17);
             this.label8.TabIndex = 6;
             this.label8.Text = "Máquina B:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(39, 236);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.label9.Location = new System.Drawing.Point(40, 241);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(74, 16);
+            this.label9.Size = new System.Drawing.Size(74, 17);
             this.label9.TabIndex = 5;
             this.label9.Text = "Máquina A:";
             // 
@@ -183,78 +183,78 @@
             // 
             this.txtBoxPrecio.Location = new System.Drawing.Point(116, 83);
             this.txtBoxPrecio.Name = "txtBoxPrecio";
-            this.txtBoxPrecio.Size = new System.Drawing.Size(194, 20);
+            this.txtBoxPrecio.Size = new System.Drawing.Size(194, 22);
             this.txtBoxPrecio.TabIndex = 1;
             // 
             // txtBoxDemanda
             // 
-            this.txtBoxDemanda.Location = new System.Drawing.Point(116, 143);
+            this.txtBoxDemanda.Location = new System.Drawing.Point(116, 145);
             this.txtBoxDemanda.Name = "txtBoxDemanda";
-            this.txtBoxDemanda.Size = new System.Drawing.Size(194, 20);
+            this.txtBoxDemanda.Size = new System.Drawing.Size(194, 22);
             this.txtBoxDemanda.TabIndex = 4;
             // 
             // txtBoxCostoVariable
             // 
             this.txtBoxCostoVariable.Location = new System.Drawing.Point(116, 173);
             this.txtBoxCostoVariable.Name = "txtBoxCostoVariable";
-            this.txtBoxCostoVariable.Size = new System.Drawing.Size(194, 20);
+            this.txtBoxCostoVariable.Size = new System.Drawing.Size(194, 22);
             this.txtBoxCostoVariable.TabIndex = 5;
             // 
             // txtBoxConstruccion
             // 
             this.txtBoxConstruccion.Location = new System.Drawing.Point(116, 205);
             this.txtBoxConstruccion.Name = "txtBoxConstruccion";
-            this.txtBoxConstruccion.Size = new System.Drawing.Size(194, 20);
+            this.txtBoxConstruccion.Size = new System.Drawing.Size(194, 22);
             this.txtBoxConstruccion.TabIndex = 6;
             // 
             // txtBoxMaquinaA
             // 
             this.txtBoxMaquinaA.Location = new System.Drawing.Point(116, 236);
             this.txtBoxMaquinaA.Name = "txtBoxMaquinaA";
-            this.txtBoxMaquinaA.Size = new System.Drawing.Size(194, 20);
+            this.txtBoxMaquinaA.Size = new System.Drawing.Size(194, 22);
             this.txtBoxMaquinaA.TabIndex = 7;
             // 
             // txtBoxMaquinaB
             // 
             this.txtBoxMaquinaB.Location = new System.Drawing.Point(116, 268);
             this.txtBoxMaquinaB.Name = "txtBoxMaquinaB";
-            this.txtBoxMaquinaB.Size = new System.Drawing.Size(194, 20);
+            this.txtBoxMaquinaB.Size = new System.Drawing.Size(194, 22);
             this.txtBoxMaquinaB.TabIndex = 8;
             // 
             // txtBoxCostoFijo
             // 
             this.txtBoxCostoFijo.Location = new System.Drawing.Point(116, 299);
             this.txtBoxCostoFijo.Name = "txtBoxCostoFijo";
-            this.txtBoxCostoFijo.Size = new System.Drawing.Size(194, 20);
+            this.txtBoxCostoFijo.Size = new System.Drawing.Size(194, 22);
             this.txtBoxCostoFijo.TabIndex = 9;
             // 
             // txtBoxTerreno
             // 
             this.txtBoxTerreno.Location = new System.Drawing.Point(116, 330);
             this.txtBoxTerreno.Name = "txtBoxTerreno";
-            this.txtBoxTerreno.Size = new System.Drawing.Size(194, 20);
+            this.txtBoxTerreno.Size = new System.Drawing.Size(194, 22);
             this.txtBoxTerreno.TabIndex = 10;
             // 
             // txtBoxNombre
             // 
             this.txtBoxNombre.Location = new System.Drawing.Point(119, 51);
             this.txtBoxNombre.Name = "txtBoxNombre";
-            this.txtBoxNombre.Size = new System.Drawing.Size(194, 20);
+            this.txtBoxNombre.Size = new System.Drawing.Size(194, 22);
             this.txtBoxNombre.TabIndex = 0;
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(54, 51);
+            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblNombre.Location = new System.Drawing.Point(54, 56);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(59, 16);
+            this.lblNombre.Size = new System.Drawing.Size(60, 17);
             this.lblNombre.TabIndex = 20;
             this.lblNombre.Text = "Nombre:";
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Blue;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(-1, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
@@ -264,18 +264,18 @@
             // 
             // txtBoxInteres
             // 
-            this.txtBoxInteres.Location = new System.Drawing.Point(119, 117);
+            this.txtBoxInteres.Location = new System.Drawing.Point(119, 116);
             this.txtBoxInteres.Name = "txtBoxInteres";
-            this.txtBoxInteres.Size = new System.Drawing.Size(194, 20);
+            this.txtBoxInteres.Size = new System.Drawing.Size(194, 22);
             this.txtBoxInteres.TabIndex = 3;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(9, 117);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.label10.Location = new System.Drawing.Point(15, 121);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 16);
+            this.label10.Size = new System.Drawing.Size(99, 17);
             this.label10.TabIndex = 26;
             this.label10.Text = "Tasa de Interes:";
             // 
@@ -309,6 +309,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCrearAlternativa";
             this.Text = "Crear Alternativa";

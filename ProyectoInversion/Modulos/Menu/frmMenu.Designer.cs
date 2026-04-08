@@ -31,13 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.escenarioBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ingresarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ingresarAlternativaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escenarioBaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.compararEscenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escenarioPesimistaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comparaciónEscenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escenarioOptimistaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comparaciónEscenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,27 +65,44 @@
             // 
             this.escenarioBaseToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.escenarioBaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.escenarioBaseToolStripMenuItem1});
-            this.escenarioBaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ingresarDatosToolStripMenuItem,
+            this.ingresarAlternativaToolStripMenuItem,
+            this.escenarioBaseToolStripMenuItem1,
             this.compararEscenariosToolStripMenuItem});
-            this.escenarioBaseToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.escenarioBaseToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.999999F, System.Drawing.FontStyle.Bold);
             this.escenarioBaseToolStripMenuItem.Name = "escenarioBaseToolStripMenuItem";
-            this.escenarioBaseToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
+            this.escenarioBaseToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
             this.escenarioBaseToolStripMenuItem.Text = "Gestión de Escenarios";
             this.escenarioBaseToolStripMenuItem.Click += new System.EventHandler(this.escenarioBaseToolStripMenuItem_Click);
             // 
+            // ingresarDatosToolStripMenuItem
+            // 
+            this.ingresarDatosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ingresarDatosToolStripMenuItem.Name = "ingresarDatosToolStripMenuItem";
+            this.ingresarDatosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.ingresarDatosToolStripMenuItem.Text = "Ingresar Simulación";
+            this.ingresarDatosToolStripMenuItem.Click += new System.EventHandler(this.ingresarDatosToolStripMenuItem_Click);
+            // 
+            // ingresarAlternativaToolStripMenuItem
+            // 
+            this.ingresarAlternativaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ingresarAlternativaToolStripMenuItem.Name = "ingresarAlternativaToolStripMenuItem";
+            this.ingresarAlternativaToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.ingresarAlternativaToolStripMenuItem.Text = "Ingresar Alternativa";
+            // 
             // escenarioBaseToolStripMenuItem1
             // 
+            this.escenarioBaseToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.escenarioBaseToolStripMenuItem1.Name = "escenarioBaseToolStripMenuItem1";
-            this.escenarioBaseToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.escenarioBaseToolStripMenuItem1.Size = new System.Drawing.Size(185, 22);
             this.escenarioBaseToolStripMenuItem1.Text = "Escenario Base";
             this.escenarioBaseToolStripMenuItem1.Click += new System.EventHandler(this.escenarioBaseToolStripMenuItem1_Click);
             // 
             // compararEscenariosToolStripMenuItem
             // 
-            this.compararEscenariosToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.compararEscenariosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.compararEscenariosToolStripMenuItem.Name = "compararEscenariosToolStripMenuItem";
-            this.compararEscenariosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.compararEscenariosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.compararEscenariosToolStripMenuItem.Text = "Comparar Escenarios";
             this.compararEscenariosToolStripMenuItem.Click += new System.EventHandler(this.compararEscenariosToolStripMenuItem_Click);
             // 
@@ -92,43 +111,44 @@
             this.escenarioPesimistaToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.escenarioPesimistaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.comparaciónEscenariosToolStripMenuItem});
-            this.escenarioPesimistaToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.escenarioPesimistaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.999999F, System.Drawing.FontStyle.Bold);
             this.escenarioPesimistaToolStripMenuItem.Name = "escenarioPesimistaToolStripMenuItem";
-            this.escenarioPesimistaToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
+            this.escenarioPesimistaToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
             this.escenarioPesimistaToolStripMenuItem.Text = "Análisis Financiero";
+            // 
+            // comparaciónEscenariosToolStripMenuItem
+            // 
+            this.comparaciónEscenariosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.comparaciónEscenariosToolStripMenuItem.Name = "comparaciónEscenariosToolStripMenuItem";
+            this.comparaciónEscenariosToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.comparaciónEscenariosToolStripMenuItem.Text = "Flujos Escenarios";
+            this.comparaciónEscenariosToolStripMenuItem.Click += new System.EventHandler(this.comparaciónEscenariosToolStripMenuItem_Click);
             // 
             // escenarioOptimistaToolStripMenuItem
             // 
             this.escenarioOptimistaToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
-            this.escenarioOptimistaToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.escenarioOptimistaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.999999F, System.Drawing.FontStyle.Bold);
             this.escenarioOptimistaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.escenarioOptimistaToolStripMenuItem.Name = "escenarioOptimistaToolStripMenuItem";
-            this.escenarioOptimistaToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.escenarioOptimistaToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.escenarioOptimistaToolStripMenuItem.Text = "Riesgo e Incertidumbre";
             // 
             // sistemaToolStripMenuItem
             // 
             this.sistemaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.salirToolStripMenuItem});
-            this.sistemaToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold);
+            this.sistemaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.999999F, System.Drawing.FontStyle.Bold);
             this.sistemaToolStripMenuItem.Name = "sistemaToolStripMenuItem";
-            this.sistemaToolStripMenuItem.Size = new System.Drawing.Size(71, 26);
+            this.sistemaToolStripMenuItem.Size = new System.Drawing.Size(63, 26);
             this.sistemaToolStripMenuItem.Text = "Sistema";
             // 
             // salirToolStripMenuItem
             // 
-            this.salirToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salirToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
-            // 
-            // comparaciónEscenariosToolStripMenuItem
-            // 
-            this.comparaciónEscenariosToolStripMenuItem.Name = "comparaciónEscenariosToolStripMenuItem";
-            this.comparaciónEscenariosToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.comparaciónEscenariosToolStripMenuItem.Text = "Flujos Escenarios";
-            this.comparaciónEscenariosToolStripMenuItem.Click += new System.EventHandler(this.comparaciónEscenariosToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -140,9 +160,11 @@
             this.ControlBox = false;
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Principal";
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -162,5 +184,7 @@
         private System.Windows.Forms.ToolStripMenuItem escenarioBaseToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem comparaciónEscenariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compararEscenariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ingresarDatosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ingresarAlternativaToolStripMenuItem;
     }
 }

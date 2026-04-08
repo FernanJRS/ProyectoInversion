@@ -129,22 +129,22 @@
             this.lblOptLabel.AutoSize = true;
             this.lblOptLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOptLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(32)))));
-            this.lblOptLabel.Location = new System.Drawing.Point(528, 21);
+            this.lblOptLabel.Location = new System.Drawing.Point(509, 21);
             this.lblOptLabel.Name = "lblOptLabel";
-            this.lblOptLabel.Size = new System.Drawing.Size(64, 15);
+            this.lblOptLabel.Size = new System.Drawing.Size(83, 15);
             this.lblOptLabel.TabIndex = 2;
-            this.lblOptLabel.Text = "Optimista:";
+            this.lblOptLabel.Text = "Alternativa B:";
             // 
             // lblPesLabel
             // 
             this.lblPesLabel.AutoSize = true;
             this.lblPesLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPesLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.lblPesLabel.Location = new System.Drawing.Point(276, 21);
+            this.lblPesLabel.Location = new System.Drawing.Point(255, 21);
             this.lblPesLabel.Name = "lblPesLabel";
-            this.lblPesLabel.Size = new System.Drawing.Size(62, 15);
+            this.lblPesLabel.Size = new System.Drawing.Size(83, 15);
             this.lblPesLabel.TabIndex = 1;
-            this.lblPesLabel.Text = "Pesimista:";
+            this.lblPesLabel.Text = "Alternativa A:";
             // 
             // lblBaseLabel
             // 
@@ -167,6 +167,7 @@
             // 
             // btnActualizar
             // 
+            this.btnActualizar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.Location = new System.Drawing.Point(342, 9);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(140, 28);

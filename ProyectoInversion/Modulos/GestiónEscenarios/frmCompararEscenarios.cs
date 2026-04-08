@@ -18,11 +18,12 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
         // Variables para ScottPlot
         double vanBase = 0, vanA = 0, vanB = 0, tirBase = 0, tirA = 0, tirB = 0, irBase = 0, irA = 0, irB = 0;
         String metrica = "VAN";
-        public frmCompararEscenarios()
+        public frmCompararEscenarios(int simulacionID)
         {
             InitializeComponent();
+
             ConexionDB DB = new ConexionDB();
-            DataTable dtAlternativas = DB.ObtenerAlternativas();
+            DataTable dtAlternativas = DB.ObtenerAlternativas(simulacionID);
 
             // Configurar ComboBox Escenario Base (Solo lectura)
             cmbEscenarioBase.DataSource = dtAlternativas.Copy();
@@ -33,24 +34,27 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             cmbEscenarioBase.Enabled = false;
 
             DataView dvFiltrado = new DataView(dtAlternativas);
-            dvFiltrado.RowFilter = "Nombre <> 'Escenario Base'";
+            dvFiltrado.RowFilter = "TipoAlternativa <> 'Base'";
 
-            // Configurar ComboBox Escenario A
-            cmbAlternativaA.DataSource = dvFiltrado;
-            cmbAlternativaA.ValueMember = "AlternativaID";
-            cmbAlternativaA.DisplayMember = "Nombre";
+            if (dvFiltrado.Table.Rows.Count > 0)
+            {
+                // Configurar ComboBox Escenario A
+                cmbAlternativaA.DataSource = dvFiltrado;
+                cmbAlternativaA.ValueMember = "AlternativaID";
+                cmbAlternativaA.DisplayMember = "Nombre";
 
-            DataView dvFiltrado2 = new DataView(dtAlternativas);
-            dvFiltrado2.RowFilter = "Nombre <> 'Escenario Base'";
+                DataView dvFiltrado2 = new DataView(dtAlternativas);
+                dvFiltrado2.RowFilter = "TipoAlternativa <> 'Base'";
 
-            // Configurar ComboBox Escenario B
-            cmbAlternativaB.DataSource = dvFiltrado2;
-            cmbAlternativaB.ValueMember = "AlternativaID";
-            cmbAlternativaB.DisplayMember = "Nombre";
+                // Configurar ComboBox Escenario B
+                cmbAlternativaB.DataSource = dvFiltrado2;
+                cmbAlternativaB.ValueMember = "AlternativaID";
+                cmbAlternativaB.DisplayMember = "Nombre";
 
-            // Una vez cargados, disparar la primera comparativa
-            CargarDatosComparativa();
-            this.Shown += frmCompararEscenarios_Shown;
+                // Una vez cargados, disparar la primera comparativa
+                //this.Shown += frmCompararEscenarios_Shown;
+            }
+                CargarDatosComparativa();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -132,15 +136,14 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
         }
 
         private void frmCompararEscenarios_Shown(object sender, EventArgs e)
-        {
-            this.Shown -= frmCompararEscenarios_Shown;
-            cmbAlternativaA.SelectedIndex = 0;
-            cmbAlternativaB.SelectedIndex = 1;
+        {   
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            using(frmEliminarAlternativa frm = new frmEliminarAlternativa())
+            ConexionDB db = new ConexionDB();
+            int simulacionID = db.ObtenerSimulacionID(Convert.ToInt32(cmbEscenarioBase.SelectedValue));
+            using (frmEliminarAlternativa frm = new frmEliminarAlternativa(simulacionID))
             {
                 frm.Owner = this;
                 if (frm.ShowDialog() == DialogResult.OK)
@@ -148,8 +151,7 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
                     int idxA = cmbAlternativaA.SelectedIndex;
                     int idxB = cmbAlternativaB.SelectedIndex;
 
-                    ConexionDB db = new ConexionDB();
-                    DataTable dtNuevas = db.ObtenerAlternativas();
+                    DataTable dtNuevas = db.ObtenerAlternativas(simulacionID);
 
                     cmbEscenarioBase.DataSource = dtNuevas.Copy();
 
@@ -169,20 +171,21 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             }
         }
 
+        private void cmbEscenarioBase_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void CargarDatosComparativa()
         {
-            // 1. Validar que haya selecciones válidas para evitar errores de conversión
-            if (cmbAlternativaA.SelectedValue == null || cmbAlternativaB.SelectedValue == null)
-                return;
 
-            // 2. Extraer los IDs (ValueMember) para SQL y los Nombres (DisplayMember) para la UI
+            // Extraer los IDs (ValueMember) para SQL y los Nombres (DisplayMember) para la UI
             int idBase = Convert.ToInt32(cmbEscenarioBase.SelectedValue);
-            int idA = Convert.ToInt32(cmbAlternativaA.SelectedValue);
-            int idB = Convert.ToInt32(cmbAlternativaB.SelectedValue);
 
             // Cargar detalles de la alternativas
             ConexionDB db = new ConexionDB();
-            DataTable dtBase = db.ObtenerDetalleAlternativa(idBase);
+            int simulacionID = db.ObtenerSimulacionID(idBase);
+            DataTable dtBase = db.ObtenerDetalleAlternativa(simulacionID, idBase);
 
             if (dtBase.Rows.Count > 0)
             {
@@ -199,7 +202,14 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
                 irBase = Convert.ToDouble(row["IR"]);
             }
 
-            DataTable dtA = db.ObtenerDetalleAlternativa(idA);
+            // Validar que haya selecciones válidas para evitar errores de conversión
+            if (cmbAlternativaA.SelectedValue == null || cmbAlternativaB.SelectedValue == null)
+                return;
+            
+            int idA = Convert.ToInt32(cmbAlternativaA.SelectedValue);
+            int idB = Convert.ToInt32(cmbAlternativaB.SelectedValue);
+            
+            DataTable dtA = db.ObtenerDetalleAlternativa(simulacionID,idA);
 
             if (dtA.Rows.Count > 0)
             {
@@ -216,7 +226,7 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
                 irA = Convert.ToDouble(row["IR"]);
             }
 
-            DataTable dtB = db.ObtenerDetalleAlternativa(idB);
+            DataTable dtB = db.ObtenerDetalleAlternativa(simulacionID, idB);
 
             if (dtB.Rows.Count > 0)
             {
@@ -315,7 +325,8 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
                     int idxB = cmbAlternativaB.SelectedIndex;
 
                     ConexionDB db = new ConexionDB();
-                    DataTable dtNuevas = db.ObtenerAlternativas();
+                    int simulacionID = db.ObtenerSimulacionID(Convert.ToInt32(cmbEscenarioBase.SelectedValue));
+                    DataTable dtNuevas = db.ObtenerAlternativas(simulacionID);
 
                     cmbEscenarioBase.DataSource = dtNuevas.Copy();
 

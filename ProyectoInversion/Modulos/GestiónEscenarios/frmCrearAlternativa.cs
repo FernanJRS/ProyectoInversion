@@ -18,7 +18,7 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
         private AlternativaModel _altActual;
         private readonly string _panelOrigen;
 
-        public event EventHandler<int> AlternativaGuardada;
+        //public event EventHandler<int> AlternativaGuardada;
 
         public frmCrearAlternativa(int simulacionID, int altBaseID, int alternativaID, string panelOrigen)
         {
@@ -51,7 +51,7 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             {
                 Cursor = Cursors.WaitCursor;
                 var ds = db.PrevisualizarAlternativa(
-                    nombre, interes, precio, demanda, cv, constr, maqA, maqB, cf, terreno);
+                    _simulacionID, nombre, interes, precio, demanda, cv, constr, maqA, maqB, cf, terreno);
 
                 if (ds.Tables.Count >= 2 && ds.Tables[1].Rows.Count > 0)
                 {
@@ -90,7 +90,7 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
                 Cursor = Cursors.WaitCursor;
                 ConexionDB conexion = new ConexionDB();
                 DataSet resultado = conexion.GuardarNuevaAlternativa(
-                    nombre, interes, precio, demanda, cv, constr, maqA, maqB, cf, terreno);
+                    _simulacionID, nombre, interes, precio, demanda, cv, constr, maqA, maqB, cf, terreno);
 
                 if (resultado != null)
                 {

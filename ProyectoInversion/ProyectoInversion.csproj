@@ -176,6 +176,7 @@
   <ItemGroup>
     <Compile Include="Clases\AlternativaModel.cs" />
     <Compile Include="Clases\ConexionDB.cs" />
+    <Compile Include="Clases\SesionProyecto.cs" />
     <Compile Include="Modulos\Base\DatabaseHelper.cs" />
     <Compile Include="Modulos\Base\frmBase.cs">
       <SubType>Form</SubType>
@@ -224,6 +225,18 @@
     <Compile Include="Modulos\Menu\frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Menu\frmSeleccionarSimulacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Menu\frmSeleccionarSimulacion.Designer.cs">
+      <DependentUpon>frmSeleccionarSimulacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Simulaciones\frmNuevoProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Simulaciones\frmNuevoProyecto.Designer.cs">
+      <DependentUpon>frmNuevoProyecto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Modulos\Base\frmBase.resx">
       <DependentUpon>frmBase.cs</DependentUpon>
@@ -245,6 +258,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Menu\frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Menu\frmSeleccionarSimulacion.resx">
+      <DependentUpon>frmSeleccionarSimulacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Simulaciones\frmNuevoProyecto.resx">
+      <DependentUpon>frmNuevoProyecto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

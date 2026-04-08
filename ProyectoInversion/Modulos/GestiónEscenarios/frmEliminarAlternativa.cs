@@ -13,11 +13,11 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
 {
     public partial class frmEliminarAlternativa : Form
     {
-        public frmEliminarAlternativa()
+        public frmEliminarAlternativa(int simulacionID)
         {
             InitializeComponent();
             ConexionDB DB = new ConexionDB();
-            DataTable dtAlternativas = DB.ObtenerAlternativas();
+            DataTable dtAlternativas = DB.ObtenerAlternativas(simulacionID);
             
             DataView dvFiltrado = new DataView(dtAlternativas);
             dvFiltrado.RowFilter = "Nombre <> 'Escenario Base'";
