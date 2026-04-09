@@ -130,9 +130,20 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             AbrirCrearAlternativa(alternativaID, "B");
         }
 
+        //[System.Runtime.InteropServices.DllImport("user32.dll")]
+        //private static extern int GetSystemMenu(IntPtr hWnd, bool bRevert);
+        //[System.Runtime.InteropServices.DllImport("user32.dll")]
+        //private static extern bool DeleteMenu(int hMenu, int nPosition, int wFlags);
+
+        //private const int SC_CLOSE = 0xF060;
+        //private const int MF_BYCOMMAND = 0x0000;
         private void frmCompararEscenarios_Load(object sender, EventArgs e)
         {
-
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            // Esto deshabilita el botón X físicamente
+            //int menu = GetSystemMenu(this.Handle, false);
+            //DeleteMenu(menu, SC_CLOSE, MF_BYCOMMAND);
         }
 
         private void frmCompararEscenarios_Shown(object sender, EventArgs e)
@@ -174,6 +185,12 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
         private void cmbEscenarioBase_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmCompararEscenarios_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form menuPrincipal = Application.OpenForms["frmMenu"];
+            if (menuPrincipal != null) menuPrincipal.Show();
         }
 
         private void CargarDatosComparativa()
@@ -278,9 +295,9 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
 
             // Obtener nombres de forma segura
             // Usamos .Replace(" - ", "\n") para que "Escenario A - Pesimista" se convierta en dos líneas
-            string nombreBase = ((DataRowView)cmbEscenarioBase.SelectedItem)["Nombre"].ToString().Replace(" - ", "\n");
-            string nombreA = ((DataRowView)cmbAlternativaA.SelectedItem)["Nombre"].ToString().Replace(" - ", "\n");
-            string nombreB = ((DataRowView)cmbAlternativaB.SelectedItem)["Nombre"].ToString().Replace(" - ", "\n");
+            string nombreBase = ((DataRowView)cmbEscenarioBase.SelectedItem)["Nombre"].ToString().Replace(" ", "\n");
+            string nombreA = ((DataRowView)cmbAlternativaA.SelectedItem)["Nombre"].ToString().Replace(" ", "\n");
+            string nombreB = ((DataRowView)cmbAlternativaB.SelectedItem)["Nombre"].ToString().Replace(" ", "\n");
 
             var barBase = new Bar { Position = 0, Value = vBase, FillColor = Colors.Gray };
             var barA = new Bar { Position = 1, Value = vA, FillColor = Colors.RoyalBlue };
@@ -424,7 +441,7 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
             string Fmt(string col, string fmt = "N2") =>
                 r[col] == DBNull.Value ? "—" : Convert.ToDecimal(r[col]).ToString(fmt);
 
-            SetLabel(pnl, "TasaInversion", $"Tasa de Inversión: {Fmt("TasaDescuento", "P2")}");
+            SetLabel(pnl, "TasaInversion", $"Tasa de Inversión: {Fmt("TasaInteres", "P2")}");
             SetLabel(pnl, "VAN", $"VAN: {Fmt("VAN", "N2")}");
             SetLabel(pnl, "TIR", $"TIR: {Fmt("TIR", "P2")}%");
             SetLabel(pnl, "IR", $"IR: {Fmt("IR", "N6")}");

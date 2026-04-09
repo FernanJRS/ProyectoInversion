@@ -84,5 +84,11 @@ namespace ProyectoInversion.Modulos.Base
 
             formsPlot.Refresh();
         }
+
+        private void frmBase_Load(object sender, EventArgs e)
+        {
+            Form menuPrincipal = Application.OpenForms["frmMenu"];
+            if (menuPrincipal != null) menuPrincipal.Show();
+        }
     }
 }

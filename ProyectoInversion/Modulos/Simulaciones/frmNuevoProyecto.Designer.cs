@@ -793,7 +793,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(870, 603);
-            this.ControlBox = false;
             this.Controls.Add(this.label37);
             this.Controls.Add(this.txtBoxVidaUtilConst);
             this.Controls.Add(this.label36);
@@ -867,11 +866,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBoxNombreSim);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmNuevoProyecto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear Proyecto";
+            this.Load += new System.EventHandler(this.frmNuevoProyecto_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

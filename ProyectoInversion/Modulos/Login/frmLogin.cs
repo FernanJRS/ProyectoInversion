@@ -31,9 +31,20 @@ namespace ProyectoInversion
             Conectado = false;
         }
 
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern int GetSystemMenu(IntPtr hWnd, bool bRevert);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool DeleteMenu(int hMenu, int nPosition, int wFlags);
+
+        private const int SC_CLOSE = 0xF060;
+        private const int MF_BYCOMMAND = 0x0000;
         private void Login_Load(object sender, EventArgs e)
         {
-
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            // Esto deshabilita el botón X físicamente
+            int menu = GetSystemMenu(this.Handle, false);
+            DeleteMenu(menu, SC_CLOSE, MF_BYCOMMAND);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

@@ -1,6 +1,7 @@
 ﻿using ProyectoInversion.Clases;
 using ProyectoInversion.Modulos.Base;
 using ProyectoInversion.Modulos.GestiónEscenarios;
+using ProyectoInversion.Modulos.Simulaciones;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,12 +38,12 @@ namespace ProyectoInversion.Modulos.Menu
             if (cmbSimulacion.SelectedValue != null)
             {
                 int simulacionID = Convert.ToInt32(cmbSimulacion.SelectedValue);
-                this.DialogResult = DialogResult.OK;
                 if (formulario == "CompararEscenarios")
                 {
                     frmCompararEscenarios frm = new frmCompararEscenarios(simulacionID);
                     frm.StartPosition = FormStartPosition.CenterScreen;
-                    frm.Show();
+                    //this.Hide();
+                    frm.ShowDialog();
                 }
                 
                 if (formulario == "EscenarioBase")
@@ -52,6 +53,18 @@ namespace ProyectoInversion.Modulos.Menu
                     //frm.Show();
                 }
 
+                if (formulario == "IngresarAlternativa")
+                {
+                    ConexionDB db = new ConexionDB();
+                    int  altBase = db.ObtenerAlternativaBaseID(simulacionID);
+
+                    frmNuevaAlternativa frm = new frmNuevaAlternativa(simulacionID, altBase);
+                    frm.StartPosition = FormStartPosition.CenterScreen;
+                    //this.Hide();
+                    frm.ShowDialog();
+                }
+
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else

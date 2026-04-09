@@ -20,10 +20,20 @@ namespace ProyectoInversion.Modulos.Menu
         {
             InitializeComponent();
         }
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern int GetSystemMenu(IntPtr hWnd, bool bRevert);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool DeleteMenu(int hMenu, int nPosition, int wFlags);
 
+        private const int SC_CLOSE = 0xF060;
+        private const int MF_BYCOMMAND = 0x0000;
         private void frmMenu_Load(object sender, EventArgs e)
         {
-
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            // Esto deshabilita el botón X físicamente
+            int menu = GetSystemMenu(this.Handle, false);
+            DeleteMenu(menu, SC_CLOSE, MF_BYCOMMAND);
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -44,36 +54,53 @@ namespace ProyectoInversion.Modulos.Menu
         {
             frmBase frm = new frmBase();
             frm.StartPosition = FormStartPosition.CenterScreen;
+            this.Hide();
             frm.ShowDialog();
-            this.Close();
         }
 
         private void comparaciónEscenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmFlujosCasos frm = new frmFlujosCasos();
             frm.StartPosition = FormStartPosition.CenterScreen;
+            this.Hide();
             frm.ShowDialog();
-            this.Close();
         }
 
         private void compararEscenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSeleccionarSimulacion frm = new frmSeleccionarSimulacion("CompararEscenarios");
             frm.StartPosition = FormStartPosition.CenterScreen;
-            frm.BringToFront();
+            this.Hide();
+            
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                this.Close();
+            } else
+            {
+                this.Show();
             }
-            
+
         }
 
         private void ingresarDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmNuevoProyecto frm = new frmNuevoProyecto();
             frm.StartPosition = FormStartPosition.CenterScreen;
+            this.Hide();
             frm.ShowDialog();
-            this.Close();
+        }
+
+        private void ingresarAlternativaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSeleccionarSimulacion frm = new frmSeleccionarSimulacion("IngresarAlternativa");
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            this.Hide();
+            
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+            } else
+            {
+                this.Show();
+            }
         }
     }
 }

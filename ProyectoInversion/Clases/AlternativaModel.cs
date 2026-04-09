@@ -28,9 +28,23 @@ namespace ProyectoInversion.Clases
 
         // ── Activos (campos del formulario) ──
         public decimal Construccion { get; set; }
+        public int DepConst { get; set; }   // AniosDepreciacion
+        public int VidUtilConst { get; set; }   // VidaUtilAnios
+
+        // — Máquina A —
         public decimal MaquinaA { get; set; }
+        public int VidUtilMaqA { get; set; }
+        public int DepMaqA { get; set; }   // AniosDepreciacion (vida contable)
+        public int RecompraMaqA_2 { get; set; }   // AnioAdquisicion 2da compra
+        public int RecompraMaqA_3 { get; set; }   // AnioAdquisicion 3ra compra
+
+        // — Máquina B —
         public decimal MaquinaB { get; set; }
+        public int VidUtilMaqB { get; set; }
+        public int DepMaqB { get; set; }
+        public int RecompraMaqB { get; set; }
         public decimal Terreno { get; set; }
+        public decimal ValorResidual { get; set; }   // ValorResidualPct
 
         // ── Indicadores calculados ──
         public decimal? VAN { get; set; }
