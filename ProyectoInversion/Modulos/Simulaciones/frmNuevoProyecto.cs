@@ -54,12 +54,16 @@ namespace ProyectoInversion.Modulos.Simulaciones
             txtBoxCostoFijoBase.Text = "30000";
             txtBoxConstruccion.Text = "400000";
             txtBoxVidaContConst.Text = "40";
+            txtBoxVidaUtilConst.Text = "40";
             txtBoxMaquinaA.Text = "140000";
             txtBoxVidaUtilMaqA.Text = "4";
             txtBoxVidaContMaqA.Text = "10";
+            txtBoxRecompra1MaqA.Text = "4";
+            txtBoxRecompra2MaqA.Text = "8";
             txtBoxMaquinaB.Text = "160000";
             txtBoxVidaUtilMaqB.Text = "6";
             txtBoxVidaContMaqB.Text = "5";
+            txtBoxRecompraMaqB.Text = "6";
             txtBoxTerreno.Text = "80000";
             txtBoxValorResidualActivosDepreciados.Text = "10";
         }
@@ -108,27 +112,30 @@ namespace ProyectoInversion.Modulos.Simulaciones
                     simulacionID: simID,
                     nombre: datos.NombreBase,
                     tasaDescuento: datos.TasaDescuento,
-                    tasaImpuesto: datos.TasaImpuesto,
                     ventasAnio1: datos.VentasAnio1,
                     precioBase: datos.PrecioBase,
                     costoVarBase: datos.CostoVarBase,
                     costoFijoBase: datos.CostoFijoBase,
-                    construccion: datos.Construccion,
-                    vidaContableConst: datos.VidaContConstruccion,
-                    maquinaA: datos.MaquinaA,
-                    vidaContableMaqA: datos.VidaContMaqA,
-                    vidaUtilMaqA: datos.VidaUtilMaqA,
-                    maquinaB: datos.MaquinaB,
-                    vidaContableMaqB: datos.VidaContMaqB,
-                    vidaUtilMaqB: datos.VidaUtilMaqB,
                     terreno: datos.Terreno,
+                    construccion: datos.Construccion,
+                    depConst: datos.VidaContConstruccion,
+                    vidaUtilConst: datos.VidaUtilConstruccion,
+                    maquinaA: datos.MaquinaA,
+                    vidaUtilMaqA: datos.VidaUtilMaqA,
+                    vidaContableMaqA: datos.VidaContMaqA,
+                    recompra1MaqA: datos.Recompra1MaqA,
+                    recompra2MaqA: datos.Recompra2MaqA,
+                    maquinaB: datos.MaquinaB,
+                    vidaUtilMaqB: datos.VidaUtilMaqB,
+                    vidaContableMaqB: datos.VidaContMaqB,
+                    recompraMaqB: datos.RecompraMaqB,
                     tasaImpuestoActivos: datos.ValorResidualActDep
                 );
 
                 if (altBaseID < 0) return;
 
                 // 3. Guardar en sesión global
-                SesionProyecto.IniciarSesion(simID, altBaseID);
+                //SesionProyecto.IniciarSesion(simID, altBaseID);
 
                 MessageBox.Show(
                     $"Proyecto creado exitosamente.",
@@ -171,14 +178,19 @@ namespace ProyectoInversion.Modulos.Simulaciones
                     MesesCT = int.Parse(txtBoxMesesCT.Text),
                     // Alternativa Base
                     NombreBase = txtBoxNombreBase.Text.Trim(),
+                    DemandaBase = double.Parse(txtBoxDemandaBase.Text),
                     Construccion = double.Parse(txtBoxConstruccion.Text),
+                    VidaUtilConstruccion = int.Parse(txtBoxVidaUtilConst.Text),
                     VidaContConstruccion = int.Parse(txtBoxVidaContConst.Text),
                     MaquinaA = double.Parse(txtBoxMaquinaA.Text),
                     VidaUtilMaqA = int.Parse(txtBoxVidaUtilMaqA.Text),
                     VidaContMaqA = int.Parse(txtBoxVidaContMaqA.Text),
+                    Recompra1MaqA = int.Parse(txtBoxRecompra1MaqA.Text),
+                    Recompra2MaqA = int.Parse(txtBoxRecompra2MaqA.Text),
                     MaquinaB = double.Parse(txtBoxMaquinaB.Text),
                     VidaUtilMaqB = int.Parse(txtBoxVidaUtilMaqB.Text),
                     VidaContMaqB = int.Parse(txtBoxVidaContMaqB.Text),
+                    RecompraMaqB = int.Parse(txtBoxRecompraMaqB.Text),
                     Terreno = double.Parse(txtBoxTerreno.Text),
                     ValorResidualActDep = double.Parse(txtBoxValorResidualActivosDepreciados.Text.Replace("%", "").Trim()) / 100.0
                 };
@@ -197,10 +209,10 @@ namespace ProyectoInversion.Modulos.Simulaciones
             public string NombreSim, Descripcion, NombreBase;
             public double TasaDescuento, TasaImpuesto, VentasAnio1, IncrAnio2, IncrAnio3;
             public double PrecioBase, IncrPrecio, CostoVarBase, LimiteCostoVar, IncrCostoVarExtra;
-            public double CostoFijoBase, IncrCostoFijo;
-            public double Construccion, MaquinaA, MaquinaB, Terreno, ProbabilidadBase, ValorResidualActDep;
-            public int VidaContConstruccion, VidaUtilMaqA, VidaContMaqA;
-            public int VidaUtilMaqB, VidaContMaqB;
+            public double CostoFijoBase, IncrCostoFijo, DemandaBase;
+            public double Construccion, MaquinaA, MaquinaB, Terreno, ValorResidualActDep;
+            public int VidaUtilConstruccion, VidaContConstruccion, VidaUtilMaqA, VidaContMaqA;
+            public int VidaUtilMaqB, VidaContMaqB, Recompra1MaqA, Recompra2MaqA, RecompraMaqB;
             public int Horizonte, AnioIncrPrecio, AnioIncrCostoFijo, MesesCT;
         }
 

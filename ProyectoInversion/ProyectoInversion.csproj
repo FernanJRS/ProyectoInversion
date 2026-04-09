@@ -231,6 +231,12 @@
     <Compile Include="Modulos\Menu\frmSeleccionarSimulacion.Designer.cs">
       <DependentUpon>frmSeleccionarSimulacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Simulaciones\frmCrearAlternativa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Simulaciones\frmCrearAlternativa.Designer.cs">
+      <DependentUpon>frmCrearAlternativa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Simulaciones\frmNuevoProyecto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Menu\frmSeleccionarSimulacion.resx">
       <DependentUpon>frmSeleccionarSimulacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Simulaciones\frmCrearAlternativa.resx">
+      <DependentUpon>frmCrearAlternativa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Simulaciones\frmNuevoProyecto.resx">
       <DependentUpon>frmNuevoProyecto.cs</DependentUpon>

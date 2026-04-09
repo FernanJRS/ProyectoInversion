@@ -58,14 +58,14 @@ namespace ProyectoInversion.Modulos.Menu
 
         private void compararEscenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (frmSeleccionarSimulacion frm = new frmSeleccionarSimulacion())
+            frmSeleccionarSimulacion frm = new frmSeleccionarSimulacion("CompararEscenarios");
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.BringToFront();
+            if (frm.ShowDialog() == DialogResult.OK)
             {
-                frm.StartPosition = FormStartPosition.CenterScreen;
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    this.Close();
-                }
+                this.Close();
             }
+            
         }
 
         private void ingresarDatosToolStripMenuItem_Click(object sender, EventArgs e)

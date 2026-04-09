@@ -347,11 +347,12 @@ namespace ProyectoInversion.Clases
 
         // Guarda la Alternativa Base (EsBase=1) y sus 4 activos
         public int GuardarAlternativaBase(int simulacionID, string nombre,
-            double tasaDescuento, double tasaImpuesto,
-            double ventasAnio1, double precioBase, double costoVarBase, double costoFijoBase,
-            double terreno, double construccion, int vidaContableConst, 
-            double maquinaA, int vidaUtilMaqA, int vidaContableMaqA, double maquinaB,
-            int vidaUtilMaqB, int vidaContableMaqB, double tasaImpuestoActivos, double probabilidad = 0.40)
+            double tasaDescuento, double ventasAnio1, double precioBase, 
+            double costoVarBase, double costoFijoBase,
+            double terreno, double construccion, int depConst, int vidaUtilConst, 
+            double maquinaA, int vidaUtilMaqA, int vidaContableMaqA, int recompra1MaqA, int recompra2MaqA,
+            double maquinaB, int vidaUtilMaqB, int vidaContableMaqB, int recompraMaqB,
+            double tasaImpuestoActivos)
         {
             try
             {
@@ -360,21 +361,32 @@ namespace ProyectoInversion.Clases
                     con.Open();
 
                     // 1. Guardar la alternativa base
-                    using (SqlCommand cmd = new SqlCommand("proy.sp_GuardarAlternativa", con))
+                    using (SqlCommand cmd = new SqlCommand("proy.sp_GuardarAlternativaBase", con))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandTimeout = 120;
+
                         cmd.Parameters.AddWithValue("@SimulacionID", simulacionID);
-                        cmd.Parameters.AddWithValue("@AlternativaBaseID", DBNull.Value);
                         cmd.Parameters.AddWithValue("@Nombre", nombre);
-                        cmd.Parameters.AddWithValue("@TipoAlternativa", "Base");
-                        cmd.Parameters.AddWithValue("@EsBase", true);
-                        cmd.Parameters.AddWithValue("@Probabilidad", probabilidad);
-                        cmd.Parameters.AddWithValue("@TasaDescuento", tasaDescuento);
-                        cmd.Parameters.AddWithValue("@TasaImpuesto", tasaImpuesto);
-                        cmd.Parameters.AddWithValue("@VentasAnio1", ventasAnio1);
-                        cmd.Parameters.AddWithValue("@PrecioBase", precioBase);
-                        cmd.Parameters.AddWithValue("@CostoVarBase", costoVarBase);
-                        cmd.Parameters.AddWithValue("@CostoFijoBase", costoFijoBase);
+                        cmd.Parameters.AddWithValue("@Precio", precioBase);
+                        cmd.Parameters.AddWithValue("@TasaInteres", tasaDescuento);
+                        cmd.Parameters.AddWithValue("@Demanda", ventasAnio1);
+                        cmd.Parameters.AddWithValue("@CostoVariable", costoVarBase);
+                        cmd.Parameters.AddWithValue("@CostoFijo", costoFijoBase);
+                        cmd.Parameters.AddWithValue("@Construccion", construccion);
+                        cmd.Parameters.AddWithValue("@depConst", depConst);
+                        cmd.Parameters.AddWithValue("@vidUtilConst", vidaUtilConst);
+                        cmd.Parameters.AddWithValue("@MaquinaA", maquinaA);
+                        cmd.Parameters.AddWithValue("@vidUtilMaqA", vidaUtilMaqA);
+                        cmd.Parameters.AddWithValue("@depMaqA", vidaContableMaqA);
+                        cmd.Parameters.AddWithValue("@recompraMaqA_2", recompra1MaqA);
+                        cmd.Parameters.AddWithValue("@recompraMaqA_3", recompra2MaqA);
+                        cmd.Parameters.AddWithValue("@MaquinaB", maquinaB);
+                        cmd.Parameters.AddWithValue("@recompraMaqB", recompraMaqB);
+                        cmd.Parameters.AddWithValue("@vidUtilMaqB", vidaUtilMaqB);
+                        cmd.Parameters.AddWithValue("@depMaqB", vidaContableMaqB);
+                        cmd.Parameters.AddWithValue("@Terreno", terreno);
+                        cmd.Parameters.AddWithValue("@valorResidual", tasaImpuestoActivos);
 
                         SqlParameter pOut = new SqlParameter("@AlternativaID", SqlDbType.Int)
                         { Direction = ParameterDirection.Output };
@@ -382,12 +394,6 @@ namespace ProyectoInversion.Clases
 
                         cmd.ExecuteNonQuery();
                         int altBaseID = (int)pOut.Value;
-
-                        // 2. Insertar los 4 activos
-                        InsertarActivo(altBaseID, "Terreno", terreno, null, null, 0, tasaImpuestoActivos);
-                        InsertarActivo(altBaseID, "Construccion", construccion, 0, vidaContableConst, 0, tasaImpuestoActivos);
-                        InsertarActivo(altBaseID, "Maquina A", maquinaA, vidaUtilMaqA, vidaContableMaqA, 0, tasaImpuestoActivos);
-                        InsertarActivo(altBaseID, "Maquina B", maquinaB, vidaUtilMaqB, vidaContableMaqB, 0, tasaImpuestoActivos);
 
                         return altBaseID;
                     }

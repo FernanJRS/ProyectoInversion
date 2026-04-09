@@ -1,4 +1,5 @@
 ﻿using ProyectoInversion.Clases;
+using ProyectoInversion.Modulos.Base;
 using ProyectoInversion.Modulos.GestiónEscenarios;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,13 @@ namespace ProyectoInversion.Modulos.Menu
 {
     public partial class frmSeleccionarSimulacion : Form
     {
-        public frmSeleccionarSimulacion()
+        private String formulario;
+        public frmSeleccionarSimulacion(String formulario)
         {
             InitializeComponent();
             ConexionDB db = new ConexionDB();
             DataTable dt = db.ObtenerSimulaciones();
+            this.formulario = formulario;
 
             cmbSimulacion.DataSource = dt;
             cmbSimulacion.DisplayMember = "Nombre";
@@ -35,9 +38,20 @@ namespace ProyectoInversion.Modulos.Menu
             {
                 int simulacionID = Convert.ToInt32(cmbSimulacion.SelectedValue);
                 this.DialogResult = DialogResult.OK;
-                frmCompararEscenarios frm = new frmCompararEscenarios(simulacionID);
-                frm.StartPosition = FormStartPosition.CenterScreen;
-                frm.Show();
+                if (formulario == "CompararEscenarios")
+                {
+                    frmCompararEscenarios frm = new frmCompararEscenarios(simulacionID);
+                    frm.StartPosition = FormStartPosition.CenterScreen;
+                    frm.Show();
+                }
+                
+                if (formulario == "EscenarioBase")
+                {
+                    //frmBase frm = new frmBase(simulacionID);
+                    //frm.StartPosition = FormStartPosition.CenterScreen;
+                    //frm.Show();
+                }
+
                 this.Close();
             }
             else
