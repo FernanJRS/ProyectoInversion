@@ -40,6 +40,7 @@
             this.lblBaseLabel = new System.Windows.Forms.Label();
             this.pnlGrid = new System.Windows.Forms.Panel();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvgFlujos)).BeginInit();
             this.pnlHeader.SuspendLayout();
             this.pnlFila.SuspendLayout();
@@ -159,6 +160,7 @@
             // 
             // pnlGrid
             // 
+            this.pnlGrid.Controls.Add(this.btnExportar);
             this.pnlGrid.Controls.Add(this.btnActualizar);
             this.pnlGrid.Location = new System.Drawing.Point(0, 81);
             this.pnlGrid.Name = "pnlGrid";
@@ -168,13 +170,24 @@
             // btnActualizar
             // 
             this.btnActualizar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Location = new System.Drawing.Point(342, 9);
+            this.btnActualizar.Location = new System.Drawing.Point(204, 9);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(140, 28);
             this.btnActualizar.TabIndex = 0;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportar.Location = new System.Drawing.Point(428, 9);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(140, 28);
+            this.btnExportar.TabIndex = 1;
+            this.btnExportar.Text = "Exportar";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // frmFlujosCasos
             // 
@@ -212,5 +225,6 @@
         private System.Windows.Forms.ComboBox cboOptimista;
         private System.Windows.Forms.Panel pnlGrid;
         private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Button btnExportar;
     }
 }

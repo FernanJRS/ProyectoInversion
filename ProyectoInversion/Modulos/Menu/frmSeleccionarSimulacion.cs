@@ -1,4 +1,6 @@
 ﻿using ProyectoInversion.Clases;
+using ProyectoInversion.Modulos.Base;
+using ProyectoInversion.Modulos.FlujosCasos;
 using ProyectoInversion.Modulos.GestiónEscenarios;
 using System;
 using System.Collections.Generic;
@@ -14,11 +16,13 @@ namespace ProyectoInversion.Modulos.Menu
 {
     public partial class frmSeleccionarSimulacion : Form
     {
-        public frmSeleccionarSimulacion()
+        private string formulario;
+        public frmSeleccionarSimulacion(String formulario)
         {
             InitializeComponent();
             ConexionDB db = new ConexionDB();
             DataTable dt = db.ObtenerSimulaciones();
+            this.formulario = formulario;
 
             cmbSimulacion.DataSource = dt;
             cmbSimulacion.DisplayMember = "Nombre";
@@ -27,6 +31,7 @@ namespace ProyectoInversion.Modulos.Menu
 
         private void cmbSimulacion_SelectedIndexChanged(object sender, EventArgs e)
         {
+
         }
 
         private void btnCargar_Click(object sender, EventArgs e)
@@ -34,10 +39,28 @@ namespace ProyectoInversion.Modulos.Menu
             if (cmbSimulacion.SelectedValue != null)
             {
                 int simulacionID = Convert.ToInt32(cmbSimulacion.SelectedValue);
+                string nombreSimulacion = ((DataRowView)cmbSimulacion.SelectedItem)["Nombre"].ToString();
                 this.DialogResult = DialogResult.OK;
-                frmCompararEscenarios frm = new frmCompararEscenarios(simulacionID);
-                frm.StartPosition = FormStartPosition.CenterScreen;
-                frm.Show();
+                if (formulario == "CompararEscenarios")
+                {
+                    frmCompararEscenarios frm = new frmCompararEscenarios(simulacionID);
+                    frm.StartPosition = FormStartPosition.CenterScreen;
+                    frm.Show();
+                }
+                
+                if (formulario == "EscenarioBase")
+                {
+                    frmBase frm = new frmBase(simulacionID);
+                    frm.StartPosition = FormStartPosition.CenterScreen;
+                    frm.Show();
+                }
+
+                if (formulario == "FlujosCasos")
+                {
+                    var frm = new frmFlujosCasos(simulacionID, nombreSimulacion);
+                    frm.StartPosition = FormStartPosition.CenterScreen;
+                    frm.Show();
+                }
                 this.Close();
             }
             else

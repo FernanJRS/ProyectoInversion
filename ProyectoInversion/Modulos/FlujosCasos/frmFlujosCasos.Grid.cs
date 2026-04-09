@@ -7,6 +7,11 @@ namespace ProyectoInversion.Modulos.FlujosCasos
 {
     public partial class frmFlujosCasos
     {
+        public frmFlujosCasos(int simulacionID)
+        {
+            InitializeComponent();
+        }
+
         private const string COL_TIPO = "TipoFila";
         private const string COL_CONCEPTO = "Concepto";
         private const string COL_BASE = "ColBase";
@@ -47,7 +52,7 @@ namespace ProyectoInversion.Modulos.FlujosCasos
                 Name = COL_CONCEPTO,
                 DataPropertyName = COL_CONCEPTO,
                 HeaderText = "Concepto",
-                FillWeight = 30,
+                FillWeight = 25,
                 DefaultCellStyle =
                 {
                     Alignment = DataGridViewContentAlignment.MiddleLeft,

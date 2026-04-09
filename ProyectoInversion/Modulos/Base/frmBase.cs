@@ -17,7 +17,7 @@ namespace ProyectoInversion.Modulos.Base
         private FormsPlot formsPlot;
         //private List<FlujoCajaAnual> datosActuales;
         private ToolTip toolTip = new ToolTip();
-        public frmBase()
+        public frmBase(int simulacionID)
         {
             InitializeComponent();
             InicializarGrafico();
@@ -27,13 +27,18 @@ namespace ProyectoInversion.Modulos.Base
         {
             formsPlot = new FormsPlot() { Dock = DockStyle.Fill };
             pnlChartWrapper.Controls.Add(formsPlot);
+            LlenarComboAlternativas();
+            
         }
         private async Task CargarDatosAsync()
         {
             try
             {
-                var indicadores = await Task.Run(() => DatabaseHelper.ObtenerIndicadoresBase());
-                var flujos = await Task.Run(() => DatabaseHelper.ObtenerFlujoCajaBase());
+                if (cmbAlternativa.SelectedValue == null) return;
+                int id = Convert.ToInt32(cmbAlternativa.SelectedValue);
+
+                var indicadores = await Task.Run(() => DatabaseHelper.ObtenerIndicadoresPorID(id));
+                var flujos = await Task.Run(() => DatabaseHelper.ObtenerFlujoCajaPorID(id));
 
                 ActualizarUI(indicadores);
                 RenderizarGrafico(flujos);
@@ -83,6 +88,19 @@ namespace ProyectoInversion.Modulos.Base
             formsPlot.Plot.Axes.Bottom.TickGenerator = ticks;
 
             formsPlot.Refresh();
+        }
+        private void LlenarComboAlternativas()
+        {
+            var dt = DatabaseHelper.ObtenerAlternativas();
+            cmbAlternativa.DataSource = dt;
+            cmbAlternativa.DisplayMember = "Nombre";
+            cmbAlternativa.ValueMember = "AlternativaID";
+            cmbAlternativa.SelectedIndex = 0;
+        }
+
+        private async void btnActualizar_Click(object sender, EventArgs e)
+        {
+            await CargarDatosAsync();
         }
     }
 }

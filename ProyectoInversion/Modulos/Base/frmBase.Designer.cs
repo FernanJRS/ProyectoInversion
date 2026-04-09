@@ -51,6 +51,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.cmbAlternativa = new System.Windows.Forms.ComboBox();
             this.pnlVAN.SuspendLayout();
             this.pnlTIR.SuspendLayout();
             this.pnlIR.SuspendLayout();
@@ -73,7 +75,7 @@
             this.pnlVAN.BackColor = System.Drawing.SystemColors.Control;
             this.pnlVAN.Controls.Add(this.lblVAN_Valor);
             this.pnlVAN.Controls.Add(this.lblVAN_Titulo);
-            this.pnlVAN.Location = new System.Drawing.Point(23, 16);
+            this.pnlVAN.Location = new System.Drawing.Point(23, 55);
             this.pnlVAN.Name = "pnlVAN";
             this.pnlVAN.Padding = new System.Windows.Forms.Padding(0, 0, 7, 0);
             this.pnlVAN.Size = new System.Drawing.Size(148, 116);
@@ -93,7 +95,7 @@
             // 
             this.pnlTIR.Controls.Add(this.lblTIR_Valor);
             this.pnlTIR.Controls.Add(this.lblTIR_Titulo);
-            this.pnlTIR.Location = new System.Drawing.Point(188, 16);
+            this.pnlTIR.Location = new System.Drawing.Point(188, 55);
             this.pnlTIR.Name = "pnlTIR";
             this.pnlTIR.Size = new System.Drawing.Size(148, 116);
             this.pnlTIR.TabIndex = 3;
@@ -122,7 +124,7 @@
             // 
             this.pnlIR.Controls.Add(this.lblIR_Valor);
             this.pnlIR.Controls.Add(this.lblIR_Titulo);
-            this.pnlIR.Location = new System.Drawing.Point(352, 16);
+            this.pnlIR.Location = new System.Drawing.Point(352, 55);
             this.pnlIR.Name = "pnlIR";
             this.pnlIR.Size = new System.Drawing.Size(148, 116);
             this.pnlIR.TabIndex = 4;
@@ -151,7 +153,7 @@
             // 
             this.pnlPR.Controls.Add(this.lblPR_Valor);
             this.pnlPR.Controls.Add(this.lblPR_Titulo);
-            this.pnlPR.Location = new System.Drawing.Point(517, 16);
+            this.pnlPR.Location = new System.Drawing.Point(517, 55);
             this.pnlPR.Name = "pnlPR";
             this.pnlPR.Size = new System.Drawing.Size(148, 116);
             this.pnlPR.TabIndex = 5;
@@ -180,7 +182,7 @@
             // 
             this.pnlInv.Controls.Add(this.lblInv_Valor);
             this.pnlInv.Controls.Add(this.lblInv_Titulo);
-            this.pnlInv.Location = new System.Drawing.Point(680, 16);
+            this.pnlInv.Location = new System.Drawing.Point(680, 55);
             this.pnlInv.Name = "pnlInv";
             this.pnlInv.Size = new System.Drawing.Size(148, 116);
             this.pnlInv.TabIndex = 6;
@@ -209,7 +211,7 @@
             // 
             this.lblTituloChart.AutoSize = true;
             this.lblTituloChart.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloChart.Location = new System.Drawing.Point(323, 147);
+            this.lblTituloChart.Location = new System.Drawing.Point(323, 186);
             this.lblTituloChart.Name = "lblTituloChart";
             this.lblTituloChart.Size = new System.Drawing.Size(211, 25);
             this.lblTituloChart.TabIndex = 7;
@@ -217,7 +219,7 @@
             // 
             // pnlChartWrapper
             // 
-            this.pnlChartWrapper.Location = new System.Drawing.Point(12, 179);
+            this.pnlChartWrapper.Location = new System.Drawing.Point(12, 218);
             this.pnlChartWrapper.Name = "pnlChartWrapper";
             this.pnlChartWrapper.Size = new System.Drawing.Size(826, 271);
             this.pnlChartWrapper.TabIndex = 8;
@@ -225,7 +227,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(230)))), ((int)(((byte)(118)))));
-            this.panel1.Location = new System.Drawing.Point(23, 16);
+            this.panel1.Location = new System.Drawing.Point(23, 55);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(148, 11);
             this.panel1.TabIndex = 9;
@@ -233,7 +235,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(80)))), ((int)(((byte)(50)))));
-            this.panel2.Location = new System.Drawing.Point(188, 16);
+            this.panel2.Location = new System.Drawing.Point(188, 55);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(148, 11);
             this.panel2.TabIndex = 10;
@@ -241,7 +243,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(185)))), ((int)(((byte)(30)))));
-            this.panel3.Location = new System.Drawing.Point(352, 16);
+            this.panel3.Location = new System.Drawing.Point(352, 55);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(148, 11);
             this.panel3.TabIndex = 11;
@@ -249,7 +251,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.panel4.Location = new System.Drawing.Point(517, 16);
+            this.panel4.Location = new System.Drawing.Point(517, 55);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(148, 11);
             this.panel4.TabIndex = 12;
@@ -257,16 +259,36 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
-            this.panel5.Location = new System.Drawing.Point(680, 16);
+            this.panel5.Location = new System.Drawing.Point(680, 55);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(148, 11);
             this.panel5.TabIndex = 13;
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Location = new System.Drawing.Point(503, 12);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(101, 23);
+            this.btnActualizar.TabIndex = 14;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // cmbAlternativa
+            // 
+            this.cmbAlternativa.FormattingEnabled = true;
+            this.cmbAlternativa.Location = new System.Drawing.Point(252, 14);
+            this.cmbAlternativa.Name = "cmbAlternativa";
+            this.cmbAlternativa.Size = new System.Drawing.Size(211, 21);
+            this.cmbAlternativa.TabIndex = 15;
             // 
             // frmBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 462);
+            this.ClientSize = new System.Drawing.Size(850, 499);
+            this.Controls.Add(this.cmbAlternativa);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -322,5 +344,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.ComboBox cmbAlternativa;
     }
 }

@@ -8,9 +8,13 @@ namespace ProyectoInversion.Modulos.FlujosCasos
 {
     public partial class frmFlujosCasos : Form
     {
-        public frmFlujosCasos()
+        private readonly int _simulacionID;
+        private readonly string _nombreSimulacion;
+        public frmFlujosCasos(int simulacionID, string nombreSimulacion)
         {
             InitializeComponent();
+            _simulacionID = simulacionID;
+            _nombreSimulacion = nombreSimulacion;
         }
         private void frmFlujosCasos_Load(object sender, EventArgs e)
         {
@@ -21,9 +25,9 @@ namespace ProyectoInversion.Modulos.FlujosCasos
         {
             try
             {
-                LlenarCombo(cboBase, "Base");
-                LlenarCombo(cboPesimista, "Pesimista");
-                LlenarCombo(cboOptimista, "Optimista");
+                LlenarCombo(cboBase, soloBase: true);      
+                LlenarCombo(cboPesimista, soloBase: false); 
+                LlenarCombo(cboOptimista, soloBase: false);
                 ConfigurarDataGridView();
             }
             catch (Exception ex)
@@ -33,17 +37,32 @@ namespace ProyectoInversion.Modulos.FlujosCasos
             }
         }
 
-        private void LlenarCombo(ComboBox cbo, string tipo)
+        private void LlenarCombo(ComboBox cbo, bool soloBase)
         {
-            string sql = @"SELECT AlternativaID, Nombre FROM proy.Alternativas
-                           WHERE TipoAlternativa = @tipo ORDER BY AlternativaID";
+            string sql = soloBase
+        ? @"SELECT AlternativaID, Nombre FROM proy.Alternativas
+            WHERE TipoAlternativa = 'Base' ORDER BY AlternativaID"
+        : @"SELECT AlternativaID, Nombre FROM proy.Alternativas
+            WHERE TipoAlternativa <> 'Base' ORDER BY AlternativaID";
 
-            var dt = EjecutarConsulta(sql, new SqlParameter("@tipo", tipo));
+            try
+            {
+                var dt = EjecutarConsulta(sql, new SqlParameter("@simID", _simulacionID));
 
-            cbo.DataSource = dt;
-            cbo.DisplayMember = "Nombre";
-            cbo.ValueMember = "AlternativaID";
-            cbo.SelectedIndex = 0;
+                cbo.DataSource = dt;
+                cbo.DisplayMember = "Nombre";
+                cbo.ValueMember = "AlternativaID";
+
+                if (cbo.Items.Count > 0)
+                {
+                    cbo.SelectedIndex = 0;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error al llenar el combo: \n{ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void btnActualizar_Click(object sender, EventArgs e)
         {
@@ -227,6 +246,48 @@ namespace ProyectoInversion.Modulos.FlujosCasos
                     da.Fill(dt);
             }
             return dt;
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            if (dvgFlujos.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar. Por favor, actualiza la tabla primero.",
+                                "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Documentos PDF (*.pdf)|*.pdf";
+                sfd.FileName = "ReporteFlujosCaja_" + DateTime.Now.ToString("yyyyMMdd") + ".pdf";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        Cursor = Cursors.WaitCursor;
+
+                        // Instancia clase generadora
+                        var generadorPdf = new ProyectoInversion.Modulos.FlujosCasos.GeneradorReportePDF();
+
+                        // Metodo
+                        generadorPdf.Generar(sfd.FileName, dvgFlujos, _nombreSimulacion);
+
+                        MessageBox.Show("PDF exportado correctamente.",
+                                        "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocurrió un error al generar el PDF:\n" + ex.Message,
+                                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        Cursor = Cursors.Default;
+                    }
+                }
+            }
         }
     }
 }
