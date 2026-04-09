@@ -305,6 +305,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmBase";
             this.Text = "Escenario Base";
+            this.Load += new System.EventHandler(this.frmBase_Load);
             this.pnlVAN.ResumeLayout(false);
             this.pnlVAN.PerformLayout();
             this.pnlTIR.ResumeLayout(false);

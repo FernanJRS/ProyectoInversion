@@ -19,6 +19,9 @@ namespace ProyectoInversion.Modulos.FlujosCasos
         private void frmFlujosCasos_Load(object sender, EventArgs e)
         {
             CargarConfiguracionInicial();
+
+            Form menuPrincipal = Application.OpenForms["frmMenu"];
+            if (menuPrincipal != null) menuPrincipal.Show();
         }
 
         private void CargarConfiguracionInicial()

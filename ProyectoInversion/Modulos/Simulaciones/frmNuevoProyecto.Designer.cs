@@ -95,6 +95,14 @@
             this.txtBoxVidaContConst = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.txtBoxValorResidualActivosDepreciados = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.txtBoxRecompraMaqB = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.txtBoxRecompra1MaqA = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtBoxRecompra2MaqA = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.txtBoxVidaUtilConst = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -473,7 +481,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(550, 393);
+            this.label23.Location = new System.Drawing.Point(674, 510);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(56, 17);
             this.label23.TabIndex = 47;
@@ -482,10 +490,10 @@
             // txtBoxTerreno
             // 
             this.txtBoxTerreno.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.txtBoxTerreno.Location = new System.Drawing.Point(612, 391);
+            this.txtBoxTerreno.Location = new System.Drawing.Point(736, 508);
             this.txtBoxTerreno.Name = "txtBoxTerreno";
-            this.txtBoxTerreno.Size = new System.Drawing.Size(135, 22);
-            this.txtBoxTerreno.TabIndex = 29;
+            this.txtBoxTerreno.Size = new System.Drawing.Size(122, 22);
+            this.txtBoxTerreno.TabIndex = 33;
             // 
             // label24
             // 
@@ -580,7 +588,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(677, 515);
+            this.btnGuardar.Location = new System.Drawing.Point(677, 562);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(87, 31);
             this.btnGuardar.TabIndex = 54;
@@ -591,7 +599,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(770, 515);
+            this.btnCancelar.Location = new System.Drawing.Point(770, 562);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 31);
             this.btnCancelar.TabIndex = 55;
@@ -708,12 +716,91 @@
             this.txtBoxValorResidualActivosDepreciados.TabIndex = 29;
             this.txtBoxValorResidualActivosDepreciados.Leave += new System.EventHandler(this.txtBoxTasaDescuento_Leave);
             // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(396, 480);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(164, 17);
+            this.label35.TabIndex = 72;
+            this.label35.Text = "Año Recompra Maquina B:";
+            // 
+            // txtBoxRecompraMaqB
+            // 
+            this.txtBoxRecompraMaqB.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.txtBoxRecompraMaqB.Location = new System.Drawing.Point(567, 475);
+            this.txtBoxRecompraMaqB.Name = "txtBoxRecompraMaqB";
+            this.txtBoxRecompraMaqB.Size = new System.Drawing.Size(135, 22);
+            this.txtBoxRecompraMaqB.TabIndex = 70;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(14, 508);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(176, 17);
+            this.label34.TabIndex = 74;
+            this.label34.Text = "Año Recompra 1 Maquina A:";
+            // 
+            // txtBoxRecompra1MaqA
+            // 
+            this.txtBoxRecompra1MaqA.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.txtBoxRecompra1MaqA.Location = new System.Drawing.Point(189, 503);
+            this.txtBoxRecompra1MaqA.Name = "txtBoxRecompra1MaqA";
+            this.txtBoxRecompra1MaqA.Size = new System.Drawing.Size(135, 22);
+            this.txtBoxRecompra1MaqA.TabIndex = 73;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(344, 508);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(176, 17);
+            this.label36.TabIndex = 76;
+            this.label36.Text = "Año Recompra 2 Maquina A:";
+            // 
+            // txtBoxRecompra2MaqA
+            // 
+            this.txtBoxRecompra2MaqA.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.txtBoxRecompra2MaqA.Location = new System.Drawing.Point(526, 503);
+            this.txtBoxRecompra2MaqA.Name = "txtBoxRecompra2MaqA";
+            this.txtBoxRecompra2MaqA.Size = new System.Drawing.Size(135, 22);
+            this.txtBoxRecompra2MaqA.TabIndex = 32;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(553, 395);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(139, 17);
+            this.label37.TabIndex = 78;
+            this.label37.Text = "Vida Útil Construcción:";
+            // 
+            // txtBoxVidaUtilConst
+            // 
+            this.txtBoxVidaUtilConst.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.txtBoxVidaUtilConst.Location = new System.Drawing.Point(698, 390);
+            this.txtBoxVidaUtilConst.Name = "txtBoxVidaUtilConst";
+            this.txtBoxVidaUtilConst.Size = new System.Drawing.Size(135, 22);
+            this.txtBoxVidaUtilConst.TabIndex = 77;
+            // 
             // frmNuevoProyecto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(869, 558);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(870, 603);
+            this.Controls.Add(this.label37);
+            this.Controls.Add(this.txtBoxVidaUtilConst);
+            this.Controls.Add(this.label36);
+            this.Controls.Add(this.txtBoxRecompra2MaqA);
+            this.Controls.Add(this.label34);
+            this.Controls.Add(this.txtBoxRecompra1MaqA);
+            this.Controls.Add(this.label35);
+            this.Controls.Add(this.txtBoxRecompraMaqB);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.txtBoxValorResidualActivosDepreciados);
             this.Controls.Add(this.label32);
@@ -779,11 +866,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBoxNombreSim);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmNuevoProyecto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear Proyecto";
+            this.Load += new System.EventHandler(this.frmNuevoProyecto_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -859,5 +947,13 @@
         private System.Windows.Forms.TextBox txtBoxVidaContConst;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox txtBoxValorResidualActivosDepreciados;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox txtBoxRecompraMaqB;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox txtBoxRecompra1MaqA;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox txtBoxRecompra2MaqA;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox txtBoxVidaUtilConst;
     }
 }

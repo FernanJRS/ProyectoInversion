@@ -71,6 +71,7 @@
             // 
             // cmbEscenarioBase
             // 
+            this.cmbEscenarioBase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEscenarioBase.Enabled = false;
             this.cmbEscenarioBase.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cmbEscenarioBase.FormattingEnabled = true;
@@ -82,6 +83,7 @@
             // 
             // cmbAlternativaA
             // 
+            this.cmbAlternativaA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAlternativaA.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cmbAlternativaA.FormattingEnabled = true;
             this.cmbAlternativaA.Location = new System.Drawing.Point(272, 72);
@@ -91,6 +93,7 @@
             // 
             // cmbAlternativaB
             // 
+            this.cmbAlternativaB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAlternativaB.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cmbAlternativaB.FormattingEnabled = true;
             this.cmbAlternativaB.Location = new System.Drawing.Point(519, 72);
@@ -438,7 +441,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.button1.Location = new System.Drawing.Point(574, 461);
+            this.button1.Location = new System.Drawing.Point(576, 506);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(143, 24);
@@ -450,7 +453,7 @@
             // btnEliminar
             // 
             this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnEliminar.Location = new System.Drawing.Point(574, 490);
+            this.btnEliminar.Location = new System.Drawing.Point(576, 535);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(143, 24);
@@ -479,10 +482,14 @@
             this.Controls.Add(this.cmbAlternativaA);
             this.Controls.Add(this.cmbEscenarioBase);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmCompararEscenarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Comparar Escenarios";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCompararEscenarios_FormClosing);
             this.Load += new System.EventHandler(this.frmCompararEscenarios_Load);
             this.Shown += new System.EventHandler(this.frmCompararEscenarios_Shown);
             this.pnlAltBase.ResumeLayout(false);

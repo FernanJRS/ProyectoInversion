@@ -89,6 +89,7 @@
             this.ingresarAlternativaToolStripMenuItem.Name = "ingresarAlternativaToolStripMenuItem";
             this.ingresarAlternativaToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.ingresarAlternativaToolStripMenuItem.Text = "Ingresar Alternativa";
+            this.ingresarAlternativaToolStripMenuItem.Click += new System.EventHandler(this.ingresarAlternativaToolStripMenuItem_Click);
             // 
             // escenarioBaseToolStripMenuItem1
             // 
@@ -157,10 +158,10 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.ControlBox = false;
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMenu";

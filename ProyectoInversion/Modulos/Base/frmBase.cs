@@ -102,5 +102,11 @@ namespace ProyectoInversion.Modulos.Base
         {
             await CargarDatosAsync();
         }
+
+        private void frmBase_Load(object sender, EventArgs e)
+        {
+            Form menuPrincipal = Application.OpenForms["frmMenu"];
+            if (menuPrincipal != null) menuPrincipal.Show();
+        }
     }
 }
