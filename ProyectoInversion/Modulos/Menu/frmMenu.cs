@@ -52,26 +52,29 @@ namespace ProyectoInversion.Modulos.Menu
 
         private void escenarioBaseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            using (frmSeleccionarSimulacion frm = new frmSeleccionarSimulacion("EscenarioBase"))
+            frmSeleccionarSimulacion frm = new frmSeleccionarSimulacion("EscenarioBase");
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            this.Hide();
+            if (frm.ShowDialog() == DialogResult.OK)
             {
-                frm.StartPosition = FormStartPosition.CenterScreen;
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    this.Close();
-                }
             }
-                
+            else
+            {
+                this.Show();
+            }   
         }
 
         private void comparaciónEscenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (frmSeleccionarSimulacion frm = new frmSeleccionarSimulacion("FlujosCasos"))
+            frmSeleccionarSimulacion frm = new frmSeleccionarSimulacion("FlujosCasos");
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            this.Hide();
+            if (frm.ShowDialog() == DialogResult.OK)
             {
-                frm.StartPosition = FormStartPosition.CenterScreen;
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    this.Close();
-                }
+            }
+            else
+            {
+                this.Show();
             }
         }
 

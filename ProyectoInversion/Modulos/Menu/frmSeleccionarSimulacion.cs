@@ -72,6 +72,7 @@ namespace ProyectoInversion.Modulos.Menu
                 {
                     var frm = new frmFlujosCasos(simulacionID, nombreSimulacion);
                     frm.StartPosition = FormStartPosition.CenterScreen;
+                    //this.Hide();
                     frm.ShowDialog();
                 }
 

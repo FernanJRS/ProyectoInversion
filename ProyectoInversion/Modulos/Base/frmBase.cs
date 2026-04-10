@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoInversion.Clases;
 using ScottPlot;
 using ScottPlot.WinForms;
 
@@ -17,9 +18,11 @@ namespace ProyectoInversion.Modulos.Base
         private FormsPlot formsPlot;
         //private List<FlujoCajaAnual> datosActuales;
         private ToolTip toolTip = new ToolTip();
+        private readonly int _simulacionID;
         public frmBase(int simulacionID)
         {
             InitializeComponent();
+            _simulacionID = simulacionID;
             InicializarGrafico();
             this.Load += async (s, e) => await CargarDatosAsync();
         }
@@ -91,11 +94,13 @@ namespace ProyectoInversion.Modulos.Base
         }
         private void LlenarComboAlternativas()
         {
-            var dt = DatabaseHelper.ObtenerAlternativas();
+            var dt = new ConexionDB().ObtenerAlternativas(_simulacionID);
             cmbAlternativa.DataSource = dt;
             cmbAlternativa.DisplayMember = "Nombre";
             cmbAlternativa.ValueMember = "AlternativaID";
-            cmbAlternativa.SelectedIndex = 0;
+
+            if (cmbAlternativa.Items.Count > 0)
+                cmbAlternativa.SelectedIndex = 0;
         }
 
         private async void btnActualizar_Click(object sender, EventArgs e)

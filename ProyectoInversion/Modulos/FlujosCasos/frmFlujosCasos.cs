@@ -43,10 +43,14 @@ namespace ProyectoInversion.Modulos.FlujosCasos
         private void LlenarCombo(ComboBox cbo, bool soloBase)
         {
             string sql = soloBase
-        ? @"SELECT AlternativaID, Nombre FROM proy.Alternativas
-            WHERE TipoAlternativa = 'Base' ORDER BY AlternativaID"
-        : @"SELECT AlternativaID, Nombre FROM proy.Alternativas
-            WHERE TipoAlternativa <> 'Base' ORDER BY AlternativaID";
+                ? @"SELECT AlternativaID, Nombre FROM proy.Alternativas
+                    WHERE TipoAlternativa = 'Base'
+                      AND SimulacionID = @simID
+                    ORDER BY AlternativaID"
+                : @"SELECT AlternativaID, Nombre FROM proy.Alternativas
+                    WHERE TipoAlternativa <> 'Base'
+                      AND SimulacionID = @simID
+                    ORDER BY AlternativaID";
 
             try
             {
