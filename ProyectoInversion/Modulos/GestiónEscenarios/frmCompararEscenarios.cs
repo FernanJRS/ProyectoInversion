@@ -285,6 +285,7 @@ namespace ProyectoInversion.Modulos.GestiónEscenarios
                     break;
             }
 
+            // Actualizar Gráficos
             ActualizarGraficoComparativo(vBase, vA, vB, metrica, formato);
         }
 
