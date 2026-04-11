@@ -167,7 +167,7 @@ namespace ProyectoInversion.Clases
             int alternativaBaseID = ObtenerAlternativaBaseID(simulacionID);
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("proy.sp_PrevisualizarAlternativa", con))
+                using (SqlCommand cmd = new SqlCommand("proy.sp_PreVisualizarAlternativa", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@SimulacionID", simulacionID);
@@ -486,6 +486,102 @@ namespace ProyectoInversion.Clases
             catch (Exception ex)
             {
                 MessageBox.Show("Error al guardar alternativa derivada: " + ex.Message);
+            }
+            return ds;
+        }
+
+        public DataTable ObtenerActivos(int simulacionID, int altBaseID, int altAID, int altBID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("proy.sp_ObtenerActivos", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@SimulacionID", simulacionID);
+                        cmd.Parameters.AddWithValue("@AltBaseID", altBaseID);
+                        cmd.Parameters.AddWithValue("@AltAID", altAID);
+                        cmd.Parameters.AddWithValue("@AltBID", altBID);
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener activos: " + ex.Message);
+            }
+            return dt;
+        }
+
+        // Devuelve un DataSet con RS1 (resumen) y RS2 (detalle por alternativa)
+        public DataSet CalcularRiesgo(int simulacionID, int[] alternativasIDs, double[] probabilidades)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                // Construir el DataTable TVP  proy.TipoSeleccionRiesgo
+                DataTable tvp = new DataTable();
+                tvp.Columns.Add("AlternativaID", typeof(int));
+                tvp.Columns.Add("Probabilidad", typeof(decimal));
+
+                for (int i = 0; i < alternativasIDs.Length; i++)
+                    tvp.Rows.Add(alternativasIDs[i], (decimal)probabilidades[i]);
+
+                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand("proy.sp_CalcularRiesgoSeleccionado", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 60;
+                    cmd.Parameters.AddWithValue("@SimulacionID", simulacionID);
+
+                    var p = cmd.Parameters.AddWithValue("@Seleccion", tvp);
+                    p.SqlDbType = SqlDbType.Structured;
+                    p.TypeName = "proy.TipoSeleccionRiesgo";
+
+                    con.Open();
+                    new SqlDataAdapter(cmd).Fill(ds);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al calcular riesgo: " + ex.Message);
+            }
+            return ds;
+        }
+
+        // Devuelve un DataSet con RS1 (Indicadores por alternativa) y RS2 (Flujo de caja)
+        public DataSet CompararAlternativas(int simulacionID, int[] alternativasIDs)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                DataTable tvp = new DataTable();
+                tvp.Columns.Add("AlternativaID", typeof(int));
+                tvp.Columns.Add("Etiqueta", typeof(string));
+                foreach (int id in alternativasIDs)
+                    tvp.Rows.Add(id, DBNull.Value);
+
+                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand("proy.sp_CompararAlternativasSeleccionadas", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 60;
+                    cmd.Parameters.AddWithValue("@SimulacionID", simulacionID);
+
+                    var p = cmd.Parameters.AddWithValue("@Seleccion", tvp);
+                    p.SqlDbType = SqlDbType.Structured;
+                    p.TypeName = "proy.TipoSeleccionComparacion";
+
+                    con.Open();
+                    new SqlDataAdapter(cmd).Fill(ds);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al comparar alternativas: " + ex.Message);
             }
             return ds;
         }

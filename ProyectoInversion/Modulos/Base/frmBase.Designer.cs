@@ -302,9 +302,10 @@
             this.Controls.Add(this.pnlTIR);
             this.Controls.Add(this.pnlVAN);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmBase";
-            this.Text = "Escenario Base";
+            this.Text = "Escenario";
             this.Load += new System.EventHandler(this.frmBase_Load);
             this.pnlVAN.ResumeLayout(false);
             this.pnlVAN.PerformLayout();

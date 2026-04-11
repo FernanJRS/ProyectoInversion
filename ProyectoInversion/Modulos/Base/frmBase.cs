@@ -28,10 +28,17 @@ namespace ProyectoInversion.Modulos.Base
         }
         private void InicializarGrafico()
         {
-            formsPlot = new FormsPlot() { Dock = DockStyle.Fill };
-            pnlChartWrapper.Controls.Add(formsPlot);
-            LlenarComboAlternativas();
-            
+            try
+            {
+                formsPlot = new FormsPlot() { Dock = DockStyle.Fill };
+                pnlChartWrapper.Controls.Add(formsPlot);
+                LlenarComboAlternativas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al inicializar el gráfico: {ex.Message}");
+            }
+
         }
         private async Task CargarDatosAsync()
         {
@@ -110,6 +117,9 @@ namespace ProyectoInversion.Modulos.Base
 
         private void frmBase_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+
             Form menuPrincipal = Application.OpenForms["frmMenu"];
             if (menuPrincipal != null) menuPrincipal.Show();
         }

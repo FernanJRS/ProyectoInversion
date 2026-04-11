@@ -292,6 +292,24 @@
     <Compile Include="Modulos\Menu\frmSeleccionarSimulacion.Designer.cs">
       <DependentUpon>frmSeleccionarSimulacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Riesgo e Incertidumbre\frmFormula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Riesgo e Incertidumbre\frmFormula.Designer.cs">
+      <DependentUpon>frmFormula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Riesgo e Incertidumbre\frmRiesgoComparación.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Riesgo e Incertidumbre\frmRiesgoComparación.Designer.cs">
+      <DependentUpon>frmRiesgoComparación.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Riesgo e Incertidumbre\frmSeleccionarAlternativas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Riesgo e Incertidumbre\frmSeleccionarAlternativas.Designer.cs">
+      <DependentUpon>frmSeleccionarAlternativas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Simulaciones\frmNuevaAlternativa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -329,6 +347,15 @@
     <EmbeddedResource Include="Modulos\Menu\frmSeleccionarSimulacion.resx">
       <DependentUpon>frmSeleccionarSimulacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Riesgo e Incertidumbre\frmFormula.resx">
+      <DependentUpon>frmFormula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Riesgo e Incertidumbre\frmRiesgoComparación.resx">
+      <DependentUpon>frmRiesgoComparación.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Riesgo e Incertidumbre\frmSeleccionarAlternativas.resx">
+      <DependentUpon>frmSeleccionarAlternativas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Simulaciones\frmNuevaAlternativa.resx">
       <DependentUpon>frmNuevaAlternativa.cs</DependentUpon>
     </EmbeddedResource>
@@ -365,6 +392,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Images\Fondo.png" />
+    <Content Include="Resources\Images\FormulaIR.png" />
+    <Content Include="Resources\Images\FormulaVAN.png" />
     <Content Include="Resources\Images\LOGO.png" />
     <Content Include="Resources\Images\Logo_Finanzas.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

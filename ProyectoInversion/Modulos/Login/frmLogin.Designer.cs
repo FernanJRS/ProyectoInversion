@@ -41,7 +41,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24.75F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(24, 106);
+            this.label1.Location = new System.Drawing.Point(24, 99);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(555, 90);
@@ -54,7 +54,7 @@
             // 
             this.btnIniciar.BackColor = System.Drawing.Color.PaleGreen;
             this.btnIniciar.Font = new System.Drawing.Font("Segoe UI", 8.249999F);
-            this.btnIniciar.Location = new System.Drawing.Point(196, 210);
+            this.btnIniciar.Location = new System.Drawing.Point(196, 215);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(93, 34);
             this.btnIniciar.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             this.btnSalir.BackColor = System.Drawing.Color.Salmon;
             this.btnSalir.Font = new System.Drawing.Font("Segoe UI", 8.249999F);
-            this.btnSalir.Location = new System.Drawing.Point(295, 210);
+            this.btnSalir.Location = new System.Drawing.Point(295, 215);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(93, 34);
             this.btnSalir.TabIndex = 3;

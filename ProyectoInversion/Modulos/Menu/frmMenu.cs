@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using ProyectoInversion.Modulos.Base;
 using ProyectoInversion.Modulos.FlujosCasos;
 using ProyectoInversion.Modulos.Simulaciones;
+using ProyectoInversion.Modulos.Riesgo_e_Incertidumbre;
 
 namespace ProyectoInversion.Modulos.Menu
 {
@@ -42,7 +43,7 @@ namespace ProyectoInversion.Modulos.Menu
 
         private void escenarioBaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,7 +53,7 @@ namespace ProyectoInversion.Modulos.Menu
 
         private void escenarioBaseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmSeleccionarSimulacion frm = new frmSeleccionarSimulacion("EscenarioBase");
+            frmSeleccionarSimulacion frm = new frmSeleccionarSimulacion("Escenarios");
             frm.StartPosition = FormStartPosition.CenterScreen;
             this.Hide();
             if (frm.ShowDialog() == DialogResult.OK)
@@ -61,7 +62,7 @@ namespace ProyectoInversion.Modulos.Menu
             else
             {
                 this.Show();
-            }   
+            }
         }
 
         private void comparaciónEscenariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -83,10 +84,11 @@ namespace ProyectoInversion.Modulos.Menu
             frmSeleccionarSimulacion frm = new frmSeleccionarSimulacion("CompararEscenarios");
             frm.StartPosition = FormStartPosition.CenterScreen;
             this.Hide();
-            
+
             if (frm.ShowDialog() == DialogResult.OK)
             {
-            } else
+            }
+            else
             {
                 this.Show();
             }
@@ -106,10 +108,26 @@ namespace ProyectoInversion.Modulos.Menu
             frmSeleccionarSimulacion frm = new frmSeleccionarSimulacion("IngresarAlternativa");
             frm.StartPosition = FormStartPosition.CenterScreen;
             this.Hide();
-            
+
             if (frm.ShowDialog() == DialogResult.OK)
             {
-            } else
+            }
+            else
+            {
+                this.Show();
+            }
+        }
+
+        private void riesgoYComparaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSeleccionarAlternativas frm = new frmSeleccionarAlternativas();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            this.Hide();
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+            }
+            else
             {
                 this.Show();
             }

@@ -21,13 +21,20 @@ namespace ProyectoInversion.Modulos.Menu
         public frmSeleccionarSimulacion(String formulario)
         {
             InitializeComponent();
-            ConexionDB db = new ConexionDB();
-            DataTable dt = db.ObtenerSimulaciones();
-            this.formulario = formulario;
+            try
+            {
+                ConexionDB db = new ConexionDB();
+                DataTable dt = db.ObtenerSimulaciones();
+                this.formulario = formulario;
 
-            cmbSimulacion.DataSource = dt;
-            cmbSimulacion.DisplayMember = "Nombre";
-            cmbSimulacion.ValueMember = "SimulacionID";
+                cmbSimulacion.DataSource = dt;
+                cmbSimulacion.DisplayMember = "Nombre";
+                cmbSimulacion.ValueMember = "SimulacionID";
+            } catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar simulaciones: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; 
+            }
         }
 
         private void cmbSimulacion_SelectedIndexChanged(object sender, EventArgs e)
@@ -41,7 +48,7 @@ namespace ProyectoInversion.Modulos.Menu
             {
                 int simulacionID = Convert.ToInt32(cmbSimulacion.SelectedValue);
                 string nombreSimulacion = ((DataRowView)cmbSimulacion.SelectedItem)["Nombre"].ToString();
-                this.DialogResult = DialogResult.OK;
+                
                 if (formulario == "CompararEscenarios")
                 {
                     frmCompararEscenarios frm = new frmCompararEscenarios(simulacionID);
@@ -50,7 +57,7 @@ namespace ProyectoInversion.Modulos.Menu
                     frm.ShowDialog();
                 }
                 
-                if (formulario == "EscenarioBase")
+                if (formulario == "Escenarios")
                 {
                     frmBase frm = new frmBase(simulacionID);
                     frm.StartPosition = FormStartPosition.CenterScreen;

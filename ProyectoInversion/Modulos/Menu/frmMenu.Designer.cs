@@ -38,6 +38,7 @@
             this.escenarioPesimistaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comparaciónEscenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escenarioOptimistaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.riesgoYComparaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -96,7 +97,7 @@
             this.escenarioBaseToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.escenarioBaseToolStripMenuItem1.Name = "escenarioBaseToolStripMenuItem1";
             this.escenarioBaseToolStripMenuItem1.Size = new System.Drawing.Size(185, 22);
-            this.escenarioBaseToolStripMenuItem1.Text = "Escenario Base";
+            this.escenarioBaseToolStripMenuItem1.Text = "Escenarios";
             this.escenarioBaseToolStripMenuItem1.Click += new System.EventHandler(this.escenarioBaseToolStripMenuItem1_Click);
             // 
             // compararEscenariosToolStripMenuItem
@@ -128,11 +129,21 @@
             // escenarioOptimistaToolStripMenuItem
             // 
             this.escenarioOptimistaToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.escenarioOptimistaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.riesgoYComparaciónToolStripMenuItem});
             this.escenarioOptimistaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.999999F, System.Drawing.FontStyle.Bold);
             this.escenarioOptimistaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.escenarioOptimistaToolStripMenuItem.Name = "escenarioOptimistaToolStripMenuItem";
             this.escenarioOptimistaToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.escenarioOptimistaToolStripMenuItem.Text = "Riesgo e Incertidumbre";
+            // 
+            // riesgoYComparaciónToolStripMenuItem
+            // 
+            this.riesgoYComparaciónToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.999999F);
+            this.riesgoYComparaciónToolStripMenuItem.Name = "riesgoYComparaciónToolStripMenuItem";
+            this.riesgoYComparaciónToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.riesgoYComparaciónToolStripMenuItem.Text = "Riesgo y Comparación";
+            this.riesgoYComparaciónToolStripMenuItem.Click += new System.EventHandler(this.riesgoYComparaciónToolStripMenuItem_Click);
             // 
             // sistemaToolStripMenuItem
             // 
@@ -187,5 +198,6 @@
         private System.Windows.Forms.ToolStripMenuItem compararEscenariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ingresarDatosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ingresarAlternativaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem riesgoYComparaciónToolStripMenuItem;
     }
 }
