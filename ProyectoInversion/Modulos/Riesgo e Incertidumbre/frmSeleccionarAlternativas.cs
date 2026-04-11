@@ -127,6 +127,12 @@ namespace ProyectoInversion.Modulos.Riesgo_e_Incertidumbre
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(txtBoxProb1.Text) || string.IsNullOrWhiteSpace(txtBoxProb2.Text) || string.IsNullOrWhiteSpace(txtBoxProb3.Text))
+            {
+                MessageBox.Show("Ingrese probabilidades válidas para todos los escenarios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             double ProbabilidadBase = Convert.ToDouble(txtBoxProb1.Text.Replace("%","").Trim()) / 100;
             double ProbabilidadA = Convert.ToDouble(txtBoxProb2.Text.Replace("%", "").Trim()) / 100;
             double ProbabilidadB = Convert.ToDouble(txtBoxProb3.Text.Replace("%", "").Trim()) / 100;
